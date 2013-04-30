@@ -1,0 +1,19 @@
+<%= simple_form_for @testscaffold, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :mystringxx %>
+  <%= f.input :mytextxx %>
+  <%= f.input :myintegerxx %>
+  <%= f.input :myfloatxx %>
+  <%= f.input :mydecimalxx %>
+  <%= f.input :mydatetimexx %>
+  <%= f.input :mytimestampxx %>
+  <%= f.input :mytimexx %>
+  <%= f.input :mydatexx %>
+  <!-- < %= f.input :mybinaryxx %> -->
+  <%= f.input :mybooleanxx %>
+  <%= f.input :myreferencesxx_id %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                testscaffolds_path, :class => 'btn' %>
+  </div>
+<% end %>

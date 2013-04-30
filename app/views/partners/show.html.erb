@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @partner.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @partner.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @partner.email %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @partner.user_id %>
+</p>
+
+<p>
+  <b>List name:</b>
+  <%= @partner.list_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_partner_path(@partner) %> |
+<%= link_to 'Back', partners_path %>

@@ -1,0 +1,22 @@
+<h3><%= current_user.full_name %>(<%= current_user.email %>)</h3>
+<% if current_user.partners.blank? -%>
+	<h4>Would you like to add a partner?</h4>
+<% else -%>
+	<h3>Partners: </h3>
+	<table border="0" cellspacing="5" cellpadding="5">
+		<% current_user.partners.each do |partner| %>
+			<tr>
+				<td>
+					<%= partner.email %> 
+				</td>
+				<td>
+					<%= link_to 'X', partner, confirm: 'Are you sure?', method: :delete, :class => "btn btn-warning whitelink" %>
+				</td>
+			</tr>
+		<% end %> 
+	</table>
+
+<% end -%>
+<br />
+<%= render 'form' %>
+<!-- < %= link_to 'Back', partners_path %> -->

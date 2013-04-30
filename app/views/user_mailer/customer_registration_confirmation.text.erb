@@ -1,0 +1,10 @@
+Thank you for registering with feeWISE, <%= @user.full_name %>
+==============================================================
+
+You have successfully registered with feewise.com, with account number <%= @user.id_with_card_token %>
+
+Your credit card will be charged <%= number_to_currency(User.last.card.amount_paid.to_f / 100) %>.
+
+To login to the site, just follow this link: <%= @url %>.
+
+Thanks for registering, we look forward to assisting you!

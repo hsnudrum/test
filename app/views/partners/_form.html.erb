@@ -1,0 +1,30 @@
+<%= simple_form_for(@partner) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, :placeholder => "Best Email Address" %>
+
+		<div class="start-hidden">
+			<%= f.input :first_name, :placeholder => '(Optional) First name' , :label => false %>
+			<%= f.input :last_name, :placeholder => '(Optional) Last name' , :label => false %>
+		</div>
+
+    <%= f.input :user_id, as: :hidden %>
+    <%= f.input :list_name, as: :hidden %>
+  </div>
+
+	<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+		<i class="icon-envelope icon-white"></i> Add
+	<% end %>
+	<%= link_to 'Done', account_path(current_user.account), :class => "btn btn-primary" %>
+
+<% end %>
+
+<script>
+	$(document).ready(function(){
+		$(".start-hidden").hide();
+		$("#partner_email").focus(function(){
+  		$(".start-hidden").show();
+		});
+	});
+</script>

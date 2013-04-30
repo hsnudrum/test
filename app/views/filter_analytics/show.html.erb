@@ -1,0 +1,17 @@
+Loading Google Analytics filter with suffix <%= @filter_name %>
+
+<%= javascript_tag do %>
+  window.foobar = "<%=j @filter_name %>";
+<% end %>
+
+<div id="setga">
+  <h2>
+    Click<a href="#" onclick="setTimeout(function (){var s=function(v){ try{_gaq._getAsyncTracker()._setVar(v)}catch(e){ try{__utmSetVar(v)}catch(e){ try{pageTracker._setVar(v)}catch(e){ setTimeout(function(){s(v)},500)}}} };s('FeeWiseTeam_' + foobar)}, 500);alert('activate')"> here </a>to activate
+  </h2>
+</div>
+
+<div id="showga">
+  <h3>
+    Click<a href="#" onclick="javascript:alert((/__utmv=.+?\.(.*?)(;|$)/.test(''+document.cookie))?RegExp.$1:'No unique word');void(0);"> here </a>to check activation
+  </h3>
+</div>

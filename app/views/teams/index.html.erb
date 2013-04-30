@@ -1,0 +1,117 @@
+<h1>Listing teams</h1>
+
+<table>
+  <tr>
+    <th>Broker found</th>
+    <th>Broker id code</th>
+    <th>Broker cell</th>
+    <th>Title insurance company found</th>
+    <th>Title insurance company id code</th>
+    <th>Title insurance company phone</th>
+    <th>Home inspector found</th>
+    <th>Home inspector id code</th>
+    <th>Home inspector cell</th>
+    <th>Private morgage insurance found</th>
+    <th>Private morgage insurance id code</th>
+    <th>Private morgage insurance phone</th>
+    <th>Home insurance found</th>
+    <th>Home insurance id code</th>
+    <th>Home insurance phone</th>
+    <th>Painter found</th>
+    <th>Painter id code</th>
+    <th>Painter cell</th>
+    <th>Sound engineer found</th>
+    <th>Sound engineer id code</th>
+    <th>Sound engineer cell</th>
+    <th>Lighting contractor found</th>
+    <th>Lighting contractor id code</th>
+    <th>Lighting contractor phone</th>
+    <th>Water system found</th>
+    <th>Water system id code</th>
+    <th>Water system phone</th>
+    <th>Electrician found</th>
+    <th>Electrician id code</th>
+    <th>Electrician cell</th>
+    <th>Hvac found</th>
+    <th>Hvac id code</th>
+    <th>Hvac cell</th>
+    <th>Trim found</th>
+    <th>Trim id code</th>
+    <th>Trim cell</th>
+    <th>Kitchen and bath found</th>
+    <th>Kitchen and bath id code</th>
+    <th>Kitchen and bath cell</th>
+    <th>Flooring found</th>
+    <th>Flooring id code</th>
+    <th>Flooring phone</th>
+    <th>Water proofing found</th>
+    <th>Water proofing id code</th>
+    <th>Water proofing phone</th>
+    <th>Landscaping found</th>
+    <th>Landscaping id code</th>
+    <th>Landscaping cell</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @teams.each do |team| %>
+  <tr>
+    <td><%= team.broker_found %></td>
+    <td><%= team.broker_id_code %></td>
+    <td><%= team.broker_cell %></td>
+    <td><%= team.title_insurance_company_found %></td>
+    <td><%= team.title_insurance_company_id_code %></td>
+    <td><%= team.title_insurance_company_phone %></td>
+    <td><%= team.home_inspector_found %></td>
+    <td><%= team.home_inspector_id_code %></td>
+    <td><%= team.home_inspector_cell %></td>
+    <td><%= team.private_morgage_insurance_found %></td>
+    <td><%= team.private_morgage_insurance_id_code %></td>
+    <td><%= team.private_morgage_insurance_phone %></td>
+    <td><%= team.home_insurance_found %></td>
+    <td><%= team.home_insurance_id_code %></td>
+    <td><%= team.home_insurance_phone %></td>
+    <td><%= team.painter_found %></td>
+    <td><%= team.painter_id_code %></td>
+    <td><%= team.painter_cell %></td>
+    <td><%= team.sound_engineer_found %></td>
+    <td><%= team.sound_engineer_id_code %></td>
+    <td><%= team.sound_engineer_cell %></td>
+    <td><%= team.lighting_contractor_found %></td>
+    <td><%= team.lighting_contractor_id_code %></td>
+    <td><%= team.lighting_contractor_phone %></td>
+    <td><%= team.water_system_found %></td>
+    <td><%= team.water_system_id_code %></td>
+    <td><%= team.water_system_phone %></td>
+    <td><%= team.electrician_found %></td>
+    <td><%= team.electrician_id_code %></td>
+    <td><%= team.electrician_cell %></td>
+    <td><%= team.hvac_found %></td>
+    <td><%= team.hvac_id_code %></td>
+    <td><%= team.hvac_cell %></td>
+    <td><%= team.trim_found %></td>
+    <td><%= team.trim_id_code %></td>
+    <td><%= team.trim_cell %></td>
+    <td><%= team.kitchen_and_bath_found %></td>
+    <td><%= team.kitchen_and_bath_id_code %></td>
+    <td><%= team.kitchen_and_bath_cell %></td>
+    <td><%= team.flooring_found %></td>
+    <td><%= team.flooring_id_code %></td>
+    <td><%= team.flooring_phone %></td>
+    <td><%= team.water_proofing_found %></td>
+    <td><%= team.water_proofing_id_code %></td>
+    <td><%= team.water_proofing_phone %></td>
+    <td><%= team.landscaping_found %></td>
+    <td><%= team.landscaping_id_code %></td>
+    <td><%= team.landscaping_cell %></td>
+    <td><%= link_to 'Show', team %></td>
+    <td><%= link_to 'Edit', edit_team_path(team) %></td>
+    <td><%= link_to 'Destroy', team, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Team', new_team_path %>

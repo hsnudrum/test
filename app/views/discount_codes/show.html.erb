@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Code:</b>
+  <%= @discount_code.code %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @discount_code.price %>
+</p>
+
+<p>
+  <b>Expiration:</b>
+  <%= @discount_code.expiration %>
+</p>
+
+
+<%= link_to 'Edit', edit_discount_code_path(@discount_code) %> |
+<%= link_to 'Back', discount_codes_path %>

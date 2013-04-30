@@ -1,0 +1,58 @@
+
+<%= display_heading :heading_text => 'Listing of Shortened URLs' %>
+
+
+<!-- BEGIN CONTENT ####################-->
+<div id="content" style="">
+
+  <div id="content-body">
+    <div class="one-col"><!-- --></div>
+    <div class="five-col">
+      <% if current_user.try(:admin?) %>
+        <!-- <h1>Listing of Shortened URLs</h1> -->
+
+        <h2>Shortener for: Google Analytics URL Builder</h2>
+
+
+        This is not a general purpose shortener.  For something like that use btly.com or .net <br />
+        <br />
+        The purpose of this utility is to support Google Analytics parameter passing. <br />
+        Parameters like those found on http://support.google.com/googleanalytics/bin/answer.py?hl=en&answer=55578 <br />
+        The results of the shortening will be a string directed to feewise.com but is encoded with info for GA.<br />
+
+        <table border="1">
+          <tr>
+            <th>Original Long URL</th>
+            <th>Shortened URI</th>
+            <th>Notes</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+
+          <% @us.each do |u| %>
+            <tr>
+              <td><%= u.url %></td>
+              <td><%= u.name %></td>
+              <td><%= u.note %></td>
+              <td><%= link_to 'Goto', u %></td>
+              <td><%= link_to 'Edit', edit_u_path(u) %></td>
+              <td><%= link_to 'Destroy', u, confirm: 'Are you sure?', method: :delete %></td>
+            </tr>
+          <% end %>
+        </table>
+
+        <br />
+
+        <%= link_to 'New Shortened URL', new_u_path %>
+      <% else %>
+
+        <h3>Custom Link Shortening is only available to admins</h3>
+
+      <% end %>
+
+    </div>
+  </div>
+  <br class="clearBoth" />
+</div>
+<!-- END CONTENT ####################-->

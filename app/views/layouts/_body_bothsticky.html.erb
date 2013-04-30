@@ -1,0 +1,65 @@
+<%= render :partial => "layouts/bootstrap_slider_top" %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      &nbsp; <br /><br />
+    </div>
+    <div class="span8">
+      <%= bootstrap_flash %>
+      <%= yield_or :bothsticky, '' %>
+      <%= yield %>
+      <br /><br /><br /><br /><br />
+    </div> <!-- .span9 -->
+  </div> <!-- /container -->
+
+  <footer>
+    <div class="navbar navbar-fixed-bottom">
+      <p>&copy; feeWISE 2012</p>
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">
+            <span style="color:white;font-size: 2.6em">fee</span><span style="color:white;font-size: 2.4em">WISE</span> <br />
+          </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+            </ul>
+            <ul class="nav pull-right">
+
+      <% if current_user %>
+        <li class="divider-vertical"></li>
+        <li><%= link_to "My Account", account_path(current_user) %> </li>
+        <li class="divider-vertical"></li>
+        <li><%= link_to "Purchase Profile", edit_purchase_preference_path(current_user) %> </li>
+        <li class="divider-vertical"></li>
+        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %> </li>
+        <li class="divider-vertical"></li>
+      <% else %>
+        <!-- <li class="divider-vertical"></li> -->
+        <!-- <li>< %= link_to "Sign In", '/sign_in' %> </li> -->
+        <li class="divider-vertical"></li>
+        <li><a>Yeah yeah, I’m already convinced! </a></li>
+        <div class="span3">
+          <li><%= link_to 'SIGN ME UP →', new_account_path, :class => "btn btn-warning btn-block btn-large whitelink" %></li>
+        </div>
+      <% end %>
+
+
+
+
+            </ul>
+          </div> <!-- .nav-collapse -->
+        </div> <!-- .container -->
+      </div> <!-- .navbar-inner -->
+    </div> <!-- .navbar .navbar-fixed-bottom -->
+  </footer>
+  <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- < %= javascript_include_tag "https://js.stripe.com/v1/", "application" %>  --><!-- It does not make sense that stripe is needed but it seems to be for the moment --> <!-- Moved because It may be causing issues with stripe -->

@@ -1,0 +1,38 @@
+
+<%  resource = User.new if resource.blank? %>
+
+<%= simple_form_for(resource, :as => :user, :url => session_path(:user), :html => { :class => 'form-vertical' }) do |f| %>
+
+  <%= f.error_notification %>
+
+  <div id="control-group">
+    <div class="controls">
+      <%= f.input :email %>
+    </div>
+  </div>
+
+  <%= f.input :password %>
+
+  <!-- < %= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %> -->
+
+
+  <div class="control-group boolean optional">
+
+    <div class="controls">
+      <input type="hidden" value="0" name="user[remember_me]">
+      <label class="checkbox">
+        <input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" class="boolean optional">     <label for="user_remember_me" class="boolean optional control-label">
+      Remember me
+    </label>
+      </label>
+    </div>
+  </div>
+
+
+
+  <div class="form-actions">
+    <%= f.button :submit,  'Sign In', :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), root_path, :class => 'btn' %>
+  </div>
+
+<% end %>

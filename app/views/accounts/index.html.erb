@@ -1,0 +1,136 @@
+<%= display_heading :heading_text => 'Account Listing' %>
+<!-- BEGIN CONTENT ####################-->
+<div id="content" style="">
+  <div id="content-body">
+    <div class="one-col"><!-- --></div>
+    <div class="five-col">
+
+      <!-- <h1>Account Listing</h1> -->
+
+      <% if current_user.try(:admin?) %>
+
+        <h1>Buyer Information</h1>
+        <table id="accounts_buy">
+          <thead>
+            <tr>
+              <th>Full Name </th>
+              <th>Email </th>
+              <th>Phone </th>
+              <!-- < % if current_user && current_user.card &&  current_user.card.stripe_card_token %> -->
+                <th>Feewise ID </th>
+              <!-- < % end %> -->
+              <th>Buying? </th>
+              <th>Where? </th>
+              <th>When? </th>
+              <th>Wrote </th>
+              <th>$ Low</th>
+              <th>$ High </th>
+              <th>$ Charged </th>
+              <th>First Use</th>
+              <th>Last Use</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% User.all.each do |u| %>
+              <tr>
+                <td><%= u.full_name %> </td>
+                <td><%= u.email %> </td>
+                <td><%= u.purchase_preference.daytime_phone %>  </td>
+                <!-- < % if current_user && current_user.card &&  current_user.card.stripe_card_token %> -->
+                <td><%= u.id_with_card_token %> </td>
+                <!-- < % end %> -->
+                <td><%= u.purchase_preference.buying  %> </td>
+                <td><%= u.purchase_preference.buy_where  %> </td>
+                <td><%= u.purchase_preference.buy_when  %> </td>
+                <td><%= u.purchase_preference.body  %> </td>
+                <td><%= u.purchase_preference.purchase_low  %> </td>
+                <td><%= u.purchase_preference.purchase_high  %> </td>
+                <td><%= u.card.amount_paid if u.card %> </td>
+                <td><%= u.purchase_preference.created_at %> </td>
+                <td><%= u.purchase_preference.updated_at %> </td>
+                <td><%= link_to "Destroy", u.account, :confirm => 'Are you sure?', :method => :delete %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table> <br/><br/>
+
+
+        <h1>Seller Information</h1>
+        <table id="accounts_sell">
+          <thead>
+            <tr>
+              <th>Full Name </th>
+              <th>Email </th>
+              <th>Phone </th>
+              <% if current_user && current_user.card &&  current_user.card.stripe_card_token %>
+                <th>Feewise ID </th>
+              <% end %>
+              <th>Wrote </th>
+              <th>Started </th>
+              <th>Changed</th>
+              <th>Selling? </th>
+              <th>Where?</th>
+              <th>When?</th>
+              <th>Low </th>
+              <th>High </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% User.all.each do |u| %>
+              <tr>
+                <td><%= u.full_name %> </td>
+                <td><%= u.email %> </td>
+                <td><%= u.purchase_preference.daytime_phone %>  </td>
+                <!-- < % if current_user && current_user.card &&  current_user.card.stripe_card_token %> -->
+                  <td><%= u.id_with_card_token %> </td>
+                <!-- < % end %> -->
+                <td><%= u.purchase_preference.body  %> </td>
+                <td><%= u.purchase_preference.created_at %> </td>
+                <td><%= u.purchase_preference.updated_at %> </td>
+                <td><%= u.purchase_preference.selling  %> </td>
+                <td><%= u.purchase_preference.selling_where %> </td>
+                <td><%= u.purchase_preference.selling_when %> </td>
+                <td><%= u.purchase_preference.sell_low %> </td>
+                <td><%= u.purchase_preference.sell_high %> </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table> <br /><br />
+
+        <h1>Currently active Discount Codes</h1>
+        <% if !Card.discounts.blank? %>
+          <table>
+            <thead>
+              <tr>
+                <th>Discount Code </th>
+                <th>Amount and Date Active </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <%  Card.discounts.each_with_index do |item, i| %>
+                <% row_class = i%2 == 0 ? "even" : "odd" %>
+                <tr class="<%= row_class %>">
+                  <td><%= item.first  %> </td>
+                  <td><%= item.last  %> </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+        <% else %>
+          No discounts available at the moment
+        <% end %>
+
+      <% else %>
+        <h3>Customer Account information is only available to admins</h3>
+      <% end %>
+
+    </div>
+  </div>
+  <br class="clearBoth" />
+</div>
+<!-- END CONTENT ####################-->

@@ -1,0 +1,139 @@
+@import "twitter/bootstrap/bootstrap";
+body {
+  padding-top: 100px;
+}
+
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+// Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not
+//       have the proper paths. So for now we use the absolute path.
+@fontAwesomeEotPath: '/assets/fontawesome-webfont.eot';
+@fontAwesomeWoffPath: '/assets/fontawesome-webfont.woff';
+@fontAwesomeTtfPath: '/assets/fontawesome-webfont.ttf';
+@fontAwesomeSvgPath: '/assets/fontawesome-webfont.svg';
+
+// Font Awesome
+@import "fontawesome";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+// @linkColor: #ffc40d;
+@navbarBackground: darken(#4169E1, 5%);
+@navbarBackgroundHighlight: darken(#4169E1, 15%);
+@navbarHeight: 60px ;
+@navbarLinkBackgroundHover: transparent ;
+@navbarText: lighten(@grayLight, 15%) ;
+@navbarLinkColor: lighten(@grayLight, 15%) ;
+@navbarLinkColorHover: @white ;
+@textColor: @black ;
+@bodyBackground: lighten(@gray, 75%);
+@dropdownBackground: darken(#4169E1, 5%);
+@dropdownLinkColor: lighten(@gray, 55%);
+@dropdownLinkBackgroundHover: @green;
+@dropdownLinkColorHover: @white;
+@linkColor:  darken(#4169E1, 5%);
+@linkColorHover:  @black;
+
+/* BootStrap Carousel overrides */
+.carousel-control {
+    /* background: none repeat scroll 0 0 #222222; */
+    /* border: 3px solid #FFFFFF; */
+    /* border-radius: 23px 23px 23px 23px; */
+    /* color: #FFFFFF; */
+    /* font-size: 35px; */
+    /* font-weight: 100; */
+    /* height: 12px; */
+    left: -50px;
+    /* line-height: 6px; */
+    /* margin-top: -20px; */
+    opacity: 0.1;
+    /* position: absolute; */
+    /* text-align: center; */
+    /* top: 0%; */
+    /* width: 40px; */
+}
+
+
+/* .carousel-inner { */
+/*     position: fixed; */
+/* } */
+
+
+/* This is an effort to get a big banner, but is currently not used.  It comes from Twitter Bootstrap */
+/* .jumbotron:after { */
+/*     /\* background: url("../img/bs-docs-masthead-pattern.png") repeat scroll center center transparent; *\/ */
+/*     bottom: 0; */
+/*     content: ""; */
+/*     display: block; */
+/*     left: 0; */
+/*     opacity: 0.4; */
+/*     position: absolute; */
+/*     right: 0; */
+/*     top: 0; */
+/* } */
+/* .subhead { */
+/*     border-bottom: 1px solid #DDDDDD; */
+/*     text-align: left; */
+/* } */
+/* .jumbotron { */
+/*     background: -moz-linear-gradient(45deg, #020031 0%, #6D3353 100%) repeat scroll 0 0 transparent; */
+/*     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2) inset, 0 -3px 7px rgba(0, 0, 0, 0.2) inset; */
+/*     color: #FFFFFF; */
+/*     padding: 40px 0; */
+/*     position: relative; */
+/*     text-align: center; */
+/*     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075); */
+/* } */
+
+
+.navbar .nav > li > a {
+    color: #FFFFFF;
+    float: none;
+    padding: 20px 15px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #1D44B8;
+}
+
+
+.navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
+background-color: #214CCE;
+color:  #00FF00;
+}
+
+
+.navbar .nav > li > a:focus, .navbar .nav > li > a:hover {
+background-color:  #008000;
+color: white;
+text-decoration: none;
+}
+
+
+#feeWISE10 {
+    border:1px solid #4169E1;
+    text-align: center;
+    /* text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); */
+    text-shadow: 0 -3px 0 rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    background-color: #FAA732;
+    background-image: linear-gradient(to bottom, #FBB450, #F89406);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 11px;
+		font-size: 20px;
+    line-height: 30px;
+}

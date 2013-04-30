@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+
+  <body>
+
+    <!-- customer signup confirmation -->
+
+    <h1>Thank you for registering with feeWISE, <%= @user.full_name %></h1>
+    <p>
+      You have successfully registered with feewise.com,
+
+      Your credit card will be charged <%= number_to_currency(User.last.card.amount_paid.to_f / 100) %>. <br/>
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <p>Thanks for registering, we look forward to assisting you!</p>
+  </body>
+</html>

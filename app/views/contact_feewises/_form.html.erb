@@ -1,0 +1,47 @@
+<%= form_for(@contact_feewise) do |f| %>
+  <% if @contact_feewise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact_feewise.errors.count, "error") %> prohibited this contact_feewise from being saved:</h2>
+
+      <ul>
+        <% @contact_feewise.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table border="0" cellspacing="5" cellpadding="5">
+    <tr>
+      <td> <%= f.submit "Send", :class => "btn btn-primary" %> </td>
+      <td> <%= link_to "Cancel", new_contact_feewise_path, :class => "btn", :style => "color:#000;" %> </td>
+      <td>
+        <span>Subject Category: <%= f.select :label, [["Help Buy","Help Buy"], ["Site Suggestion","Site Suggestion"], ["Compliment","Compliment"], ["Critique","Critique"], ["Other","Other"] ], {:include_blank => true} %></span>
+      </td>
+    </tr>
+  </table>
+
+  <table border="0" cellspacing="5" cellpadding="5">
+    <tr>
+      <td> To </td>
+      <td> <%= f.text_field :to , :class => 'input-text', :placeholder => "founders@feewise.com", :style =>"margin: 0px; width: 500px;",:readonly => true %> </td>
+    </tr>
+    <tr>
+      <td> Cc </td>
+      <td> <%= f.text_field :cc, :class => 'input-text', :style =>"margin: 0px; width: 500px;" %> </td>
+    </tr>
+    <tr>
+      <td> From </td>
+      <td> <%= f.text_field :email, :class => 'input-text', :style =>"margin: 0px; width: 500px;", :placeholder => "Needed for an answer" %> </td>
+    </tr>
+    <tr>
+      <td> Subject </td>
+      <td> <%= f.text_field :subject, :class => 'input-text', :style =>"margin: 0px; width: 500px;" %> </td>
+    </tr>
+  </table>
+
+  <%= f.text_area :body, :class => 'input-text', :style =>"margin: 0px; width: 574px; height: 274px;" %>
+
+  <%= f.hidden_field :user_id %>
+
+<% end %>

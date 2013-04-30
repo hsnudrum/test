@@ -1,0 +1,94 @@
+
+<%= form_for(@card) do |f| %>
+  <% if @card.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:
+      </h2>
+      <ul>
+        <% @card.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h2>Billing Information</h2>
+
+  <%= f.hidden_field :stripe_card_token %>
+
+  <div><label>* Cardholder Name</label></div>
+
+  <% if current_user && !current_user.full_name.blank? %>
+    <%= f.text_field :cardholder_name, :class => 'input-text', :value => current_user.full_name %><br /><br />
+  <% else %>
+    <%= f.text_field :cardholder_name, :class => 'input-text' %><br /><br />
+  <% end %>
+
+
+  <% if @card.stripe_card_token.present? %>
+    Credit card has been provided.
+  <% else %>
+    <div><label>Card Number</label></div>
+    <%= text_field_tag :card_number, nil, name: nil, :class => 'input-text' %>
+    <br />
+    <%= image_tag "med_icon_creditCards.jpg", :title => "title", :class => "class", :alt => "We accept American Express, Discover Cards, Visa, and MasterCard." %><br /><br />
+    <div><label>Security Code</label></div>
+    <%= text_field_tag :card_code, nil, name: nil, :class => 'input-text', :placeholder => "CVV" %><br /><br />
+    <div class="input-div">
+      <div class="field">
+        <div><label>Expiration Date</label></div>
+        <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class: 'input_text'}%>
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: 'input_text'}%>
+      </div>
+    </div>
+  <% end %>
+
+  <div><label>* Billing Address</label></div>
+  <%= f.text_field :billing_address, :class => 'input-text' %><br /><br />
+
+  <div><label>* City</label></div>
+  <%= f.text_field :city, :class => 'input-text' %><br /><br />
+
+  <div><label>State/Province</label></div>
+  <%= render :partial => "list_of_states" %>
+  <%= f.select :state, us_states, :class => 'input-text' %><br /><br />
+
+  <div><label>Postal Code</label></div>
+  <%= f.text_field :postal_code, :class => 'input-text', :placeholder => "Zip Code" %><br /><br />
+
+  <div><label>Discount Code</label></div>
+  <%= f.text_field :discount_code, :class => 'input-text', :placeholder => "Groupon/Living Social/Specials" %><br /><br />
+
+  <div id="stripe_error">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+  </div>
+
+  <!-- <div class="actions"> -->
+  <!--   < %= f.submit "",  :id=>"btn-completeOrder", :class=>"button" %> -->
+  <!-- </div> -->
+
+  <div class="form-actions">
+    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+      <i class="icon-ok icon-white"></i> Complete Order
+    <% end %>
+
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                edit_purchase_preference_path(current_user.purchase_preference), :class => 'btn' %>
+
+  </div>
+
+  <br class="clearBoth">
+  <div class="margin-before-sm smTxt">
+    By clicking Complete Order I accept the
+    <%= link_to "Terms and Conditions", '/terms_of_use' %>
+    and
+    <%= link_to "Privacy Policy", '/privacy_policy' %>.
+  </div>
+
+  <br />
+  <!-- <p> <strong>* This offer is void where prohibited:</strong> AL AK IA KS LA MS MO OK OR TN</p> -->
+  * This offer is void where prohibited: AL, AK, IA, KS, LA, MS, MO, OK, OR and TN for both home sellers and buyers, and NJ for home sellers.
+
+
+<% end %>

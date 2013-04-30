@@ -1,0 +1,7 @@
+#
+echo 'did you precompile and commit to git first?'
+git push staging master
+heroku run rake db:migrate --remote staging
+heroku run rake assets:precompile  --remote staging
+heroku ps --remote staging
+heroku logs --remote staging

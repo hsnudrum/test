@@ -1,0 +1,914 @@
+diff --git a/app/assets/javascripts/application.js b/app/assets/javascripts/application.js
+index 23215b7..adbe2d9 100644
+--- a/app/assets/javascripts/application.js
++++ b/app/assets/javascripts/application.js
+@@ -11,6 +11,7 @@
+ // GO AFTER THE REQUIRES BELOW.
+ //
+ //= require jquery
++//= require jquery-ui
+ //= require jquery_ujs
+ //= require dataTables/jquery.dataTables
+ //= require active_admin.js
+diff --git a/app/assets/stylesheets/bootstrap_and_overrides.css.less b/app/assets/stylesheets/bootstrap_and_overrides.css.less
+index 8f54030..451a676 100644
+--- a/app/assets/stylesheets/bootstrap_and_overrides.css.less
++++ b/app/assets/stylesheets/bootstrap_and_overrides.css.less
+@@ -260,4 +260,26 @@ body {
+ /*     position: relative; */
+ /*     text-align: center; */
+ /*     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075); */
+-/* } */
+\ No newline at end of file
++/* } */
++
++
++.navbar .nav > li > a {
++    color: #FFFFFF;
++    float: none;
++    padding: 20px 15px;
++    text-decoration: none;
++    text-shadow: 0 1px 0 #1D44B8;
++}
++
++
++.navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
++background-color: #214CCE;
++color:  #00FF00;
++}
++
++
++.navbar .nav > li > a:focus, .navbar .nav > li > a:hover {
++background-color:  #008000;
++color: white;
++text-decoration: none;
++}
+\ No newline at end of file
+diff --git a/app/views/accounts/show.html.erb b/app/views/accounts/show.html.erb
+index cf23624..297f8f2 100644
+--- a/app/views/accounts/show.html.erb
++++ b/app/views/accounts/show.html.erb
+@@ -7,7 +7,7 @@
+   <div class="span6">
+     <!-- Possible states are: DONE, INPROC, TBD -->
+     <!-- Possible level_opt are: tiny, big -->
+-    <%= display_numbered_account_line "278A", "Register with FeeWise", "DONE" %>
++    <%= display_numbered_account_line "278A", "Register with feeWISE", "DONE" %>
+     <%= display_numbered_account_line "278B", "Review-Checklist", "DONE" %>
+     <%= display_numbered_account_line "278C", "Set Budget", "INPROC" %>
+     <%= display_numbered_account_line "278D", "Build your Team" %>
+diff --git a/app/views/agents/index.html.erb b/app/views/agents/index.html.erb
+index f698aef..2fc76bf 100644
+--- a/app/views/agents/index.html.erb
++++ b/app/views/agents/index.html.erb
+@@ -1,7 +1,7 @@
+       <!-- BEGIN PAGE-HEAD ####################-->
+       <div id="pageHead">
+         <div id="title-area">
+-          <div id="title-content"><h1>You are now logged into the FeeWise Network</h1></div>
++          <div id="title-content"><h1>You are now logged into the feeWISE Network</h1></div>
+         </div>
+       </div>
+       <!-- END PAGE-HEAD ####################-->
+diff --git a/app/views/cards/create.html.erb b/app/views/cards/create.html.erb
+index f0dfaab..21c0bc3 100644
+--- a/app/views/cards/create.html.erb
++++ b/app/views/cards/create.html.erb
+@@ -1,2 +1,2 @@
+-Please report the following error to FeeWise
++Please report the following error to feeWISE
+ <%= debug params %>
+diff --git a/app/views/contact_feewises/show.html.erb b/app/views/contact_feewises/show.html.erb
+index c42c9c2..61669b7 100644
+--- a/app/views/contact_feewises/show.html.erb
++++ b/app/views/contact_feewises/show.html.erb
+@@ -8,7 +8,7 @@
+       <%= t ".fe_thank_you_email", default: "Thank you for sending us an enquiry." %>
+       <br />      <br />
+       <p>
+-        <a href="http://www.facebook.com/FeeWise" target="_blank">
++        <a href="http://www.facebook.com/feeWISE" target="_blank">
+           <img src="/assets/lg-icon-facebook.jpg" title="Like us on Facebook" alt="Facebook" class="social-icons" /></a>
+         <a href="http://twitter.com/feewise" target="_blank">
+           <img src="/assets/lg-icon-twitter.jpg" title="Follow us on Twitter" alt="Twitter" class="social-icons" /></a>
+diff --git a/app/views/devise/registrations/new.html.erb b/app/views/devise/registrations/new.html.erb
+index 21f0b59..1a2acf2 100644
+--- a/app/views/devise/registrations/new.html.erb
++++ b/app/views/devise/registrations/new.html.erb
+@@ -27,14 +27,7 @@
+         <%= f.input :password, :required => true %>
+         <%= f.input :password_confirmation, :required => true %>
+ 
+-        <!-- TRY 1 --><!-- TRY 1 --><!-- TRY 1 -->
+-        <!-- < %= f.input :terms_of_service, :required => true, :as => :boolean, :label => false %>  -->
+-        <!-- < %= render :partial => "static_pages/terms_and_privacy" %> -->
+-
+-        <!-- TRY 2 --><!-- TRY 2 --><!-- TRY 2 -->
+-        <!-- < %= f.input :terms_of_service, :required => true, :as => :boolean, :label => (render :partial => "static_pages/terms_and_privacy") %> -->
+-
+-        <!-- TRY 3 --><!-- TRY 3 --><!-- TRY 3 -->  <!-- Choice on same line or have error message work? -->
++        <!-- Choice on same line or have error message work? -->
+         <div class="control-group boolean required">
+           <div class="controls"><input type="hidden" value="0" name="user[terms_of_service]">
+             <label class="checkbox">
+diff --git a/app/views/devise/sessions/_simple_sign_up.html.erb b/app/views/devise/sessions/_simple_sign_up.html.erb
+index 45c2c47..d34c8bd 100644
+--- a/app/views/devise/sessions/_simple_sign_up.html.erb
++++ b/app/views/devise/sessions/_simple_sign_up.html.erb
+@@ -12,7 +12,22 @@
+   </div>
+ 
+   <%= f.input :password %>
+-  <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable?   %>
++
++  <!-- < %= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %> -->
++
++
++  <div class="control-group boolean optional">
++
++    <div class="controls">
++      <input type="hidden" value="0" name="user[remember_me]">
++      <label class="checkbox">
++        <input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" class="boolean optional">     <label for="user_remember_me" class="boolean optional control-label">
++      Remember me
++    </label>
++      </label>
++    </div>
++  </div>
++
+ 
+ 
+   <div class="form-actions">
+diff --git a/app/views/filter_analytics/new.html.erb b/app/views/filter_analytics/new.html.erb
+index e59b914..3704089 100644
+--- a/app/views/filter_analytics/new.html.erb
++++ b/app/views/filter_analytics/new.html.erb
+@@ -16,7 +16,7 @@
+     </div><br />
+   <% end %>
+ <br />
+-Remove your browser/machine combo from Google Analytics Tracking for FeeWise.
++Remove your browser/machine combo from Google Analytics Tracking for feeWISE.
+ <br />
+ Enter the password feewise supplied.
+ <br />
+diff --git a/app/views/homes/home_a.html.erb b/app/views/homes/home_a.html.erb
+index f249de1..45810c9 100644
+--- a/app/views/homes/home_a.html.erb
++++ b/app/views/homes/home_a.html.erb
+@@ -14,10 +14,10 @@
+   <div class='well'>
+ 
+     <div class="jqui_accordion">
+-      <h3><a href="#"> What is FeeWise?</a></h3>
++      <h3><a href="#"> What is feeWISE?</a></h3>
+       <div>
+ 
+-        <p> FeeWise is your guide to being a more savvy home buyer and/or seller.<br />
++        <p> FeeWISE is your guide to being a more savvy home buyer and/or seller.<br />
+           What you don't know can cost you.  Fortunately, what you do know can save you a bundle.</p>
+       </div>
+ 
+@@ -59,10 +59,10 @@
+           If you have any, ask us.</p>
+       </div>
+ 
+-      <h3><a href="#">Be FeeWise Now</a></h3>
++      <h3><a href="#">Be feeWISE Now</a></h3>
+       <div>
+ 
+-        <p>If you are serious about getting yourself the best possible outcome, then FeeWise was made for you.</p>
++        <p>If you are serious about getting yourself the best possible outcome, then feeWISE was made for you.</p>
+         <p>When you are all done, you can be proud of yourself for being far more savvy than most.</p>
+         <p>Not satisfied? Just let us know and we will refund your membership fee. So there's no risk.<br />
+           In fact, the risk you're already taking is going down. You will have a better sense what is happening.</p>
+diff --git a/app/views/layouts/_body_accordion.html.erb b/app/views/layouts/_body_accordion.html.erb
+index 8b1cad5..f196738 100644
+--- a/app/views/layouts/_body_accordion.html.erb
++++ b/app/views/layouts/_body_accordion.html.erb
+@@ -9,7 +9,7 @@
+ 
+           <a class="brand" href="/">
+             <span style="color:white;font-size: 2.6em">fee</span><span style="color:white;font-size: 2.4em">WISE</span> <br />
+-            <%= t ".fe_motto_secondary", default: "Buying a home? Be FeeWise and we pay you to buy." %>
++            <%= t ".fe_motto_secondary", default: "Buying a home? Be feeWISE and we pay you to buy." %>
+           </a>
+           <a class="brand nav pull-right" href="#">(917) 720-4242</a>
+           <div class="nav-collapse">
+@@ -17,7 +17,7 @@
+               <!-- <li>< %= link_to "Home", homes_home_a_path %> </li> -->
+               <li><%= link_to "Home", root_path %> </li>
+               <li><%= link_to "How It Works", '/how_it_works' %> </li>
+-              <li><%= link_to "Why FeeWise", '/why_feewise' %></li>
++              <li><%= link_to "Why feeWISE", '/why_feewise' %></li>
+               <li><%= link_to "About Us", '/about_us' -%></li>
+               <li><%= link_to "Support / FAQ", '/support' %></li>
+               <li class="dropdown" id="accountmenu">
+@@ -84,7 +84,7 @@
+           <!-- <div class='well'> -->
+             <%= link_to 'BUY!', new_account_path, :class => "btn btn-warning btn-block btn-large whitelink" %>
+             <div>  <!-- sidebar -->
+-              <%= t ".fe_generic_sidebar", default: "<h3>FeeWise Pledge</h3><p>If the experience using your FeeWise ever lets you down, we'll make it right or return your purchase. Simple as that.</p><br /><h3>We're Here for You</h3><p>If you want to talk to someone, call us at 917-720-4242. Also, check out our FAQ for answers to some questions.</p>" %>
++              <%= t ".fe_generic_sidebar", default: "<h3>feeWISE Pledge</h3><p>If the experience using your feeWISE ever lets you down, we'll make it right or return your purchase. Simple as that.</p><br /><h3>We're Here for You</h3><p>If you want to talk to someone, call us at 917-720-4242. Also, check out our FAQ for answers to some questions.</p>" %>
+               <%= link_to "Click to learn more on How It Works!", '/how_it_works' %>
+             </div> <!-- .sidebar -->
+           </div> <!-- .well -->
+@@ -95,14 +95,14 @@
+       </div><!--/row-->
+ 
+       <footer>
+-        <p>&copy; FeeWise 2012</p>
++        <p>&copy; feeWISE 2012</p>
+       </footer>
+ 
+     </div> <!-- /container -->
+ 
+     <footer>
+       <div class="navbar navbar-fixed-bottom">
+-        <p>&copy; FeeWise 2012</p>
++        <p>&copy; feeWISE 2012</p>
+         <div class="navbar-inner">
+           <div class="container">
+             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+@@ -114,11 +114,11 @@
+ 
+               <ul class="nav">
+                 <li class="dropdown" id="accountmenu">
+-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">FeeWise<b class="caret"></b></a>
++                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">feeWISE<b class="caret"></b></a>
+                   <ul class="dropdown-menu">
+                     <li><a href="/">Home</a></li>
+                     <li><%= link_to 'How It Works', '/how_it_works' %></li>
+-                    <li><%= link_to 'Why FeeWise', '/why_feewise' %></li>
++                    <li><%= link_to 'Why feeWISE', '/why_feewise' %></li>
+                     <li><%= link_to 'Account / Sign In', '/sign_in' %></li>
+                   </ul>
+                 </li>
+@@ -146,7 +146,7 @@
+                 <li class="dropdown" id="accountmenu">
+                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">Legal<b class="caret"></b></a>
+                   <ul class="dropdown-menu">
+-                    <li><a>Copyright &copy; 2012 FeeWise. All Rights Reserved.</a></li>
++                    <li><a>Copyright &copy; 2012 feeWISE. All Rights Reserved.</a></li>
+                     <li><%= link_to "Privacy Policy", '/privacy_policy' %>  <%= link_to "Terms of Use", '/terms_of_use' %></li>
+                     <li><%= link_to "Equal Housing Opportunity", '/equal_housing_opportunity' %></li>
+                   </ul>
+diff --git a/app/views/layouts/_body_slider.html.erb b/app/views/layouts/_body_slider.html.erb
+index 31dd7bb..78cba22 100644
+--- a/app/views/layouts/_body_slider.html.erb
++++ b/app/views/layouts/_body_slider.html.erb
+@@ -12,7 +12,7 @@
+           <a class="brand" href="/">
+             <!-- < %= render :partial => "layouts/FeeWISEIconicText" %> -->
+           <span style="color:white;font-size: 2.6em">fee</span><span style="color:white;font-size: 2.4em">WISE</span> <br />
+-            <%= t ".fe_motto_main", default: "Buying a home? Be FeeWise and we pay you to buy." %>
++            <%= t ".fe_motto_main", default: "Buying a home? Be feeWISE and we pay you to buy." %>
+           </a>
+           <a class="brand nav pull-right" href="#">(917) 720-4242</a>
+           <div class="nav-collapse">
+@@ -47,7 +47,7 @@
+               <a href="/">Home</a>
+             </li>
+             <li><%= link_to "How It Works", '/how_it_works' %> </li>
+-            <li><%= link_to "Why FeeWise", '/why_feewise' %></li>
++            <li><%= link_to "Why feeWISE", '/why_feewise' %></li>
+             <li><%= link_to "About Us", '/about_us' -%></li>
+             <li><%= link_to "Support / FAQ", '/support' %></li>
+ 
+@@ -86,7 +86,7 @@
+           <!-- <div class='well'> -->
+             <%= link_to  "BUY!" , new_account_path, :class => "btn btn-warning btn-block btn-large whitelink" %>
+             <div>  <!-- sidebar -->
+-              <%= t ".fe_generic_sidebar", default: "<h3>FeeWise Pledge</h3><p>If the experience using your FeeWise ever lets you down, we'll make it right or return your purchase. Simple as that.</p><br /><h3>We're Here for You</h3><p>If you want to talk to someone, call us at 917-720-4242. Also, check out our FAQ for answers to some questions.</p>" %>
++              <%= t ".fe_generic_sidebar", default: "<h3>feeWISE Pledge</h3><p>If the experience using your feeWISE ever lets you down, we'll make it right or return your purchase. Simple as that.</p><br /><h3>We're Here for You</h3><p>If you want to talk to someone, call us at 917-720-4242. Also, check out our FAQ for answers to some questions.</p>" %>
+               <%= link_to "Click to learn more on How It Works!", '/how_it_works' %>
+             </div> <!-- .sidebar -->
+           </div> <!-- .well -->
+@@ -99,7 +99,7 @@
+       </div><!--/row-->
+ 
+       <footer>
+-        <p>&copy; FeeWise 2012</p>
++        <p>&copy; feeWISE 2012</p>
+       </footer>
+ 
+     </div> <!-- /container -->
+@@ -116,11 +116,11 @@
+           <div class="nav-collapse">
+             <ul class="nav">
+               <li class="dropdown" id="accountmenu">
+-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">FeeWise<b class="caret"></b></a>
++                <a class="dropdown-toggle" data-toggle="dropdown" href="#">feeWISE<b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+                   <li><a href="/">Home</a></li>
+                   <li><%= link_to 'How It Works', '/how_it_works' %></li>
+-                  <li><%= link_to 'Why FeeWise', '/why_feewise' %></li>
++                  <li><%= link_to 'Why feeWISE', '/why_feewise' %></li>
+                   <li><%= link_to 'Account / Sign In', '/sign_in' %></li>
+                 </ul>
+               </li>
+@@ -148,7 +148,7 @@
+               <li class="dropdown" id="accountmenu">
+                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Legal<b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+-                  <li><a>Copyright &copy; 2012 FeeWise. All Rights Reserved.</a></li>
++                  <li><a>Copyright &copy; 2012 feeWISE. All Rights Reserved.</a></li>
+                   <li><%= link_to "Privacy Policy", '/privacy_policy' %>  <%= link_to "Terms of Use", '/terms_of_use' %></li>
+                   <li><%= link_to "Equal Housing Opportunity", '/equal_housing_opportunity' %></li>
+                 </ul>
+diff --git a/app/views/layouts/_body_sticky_footer.html.erb b/app/views/layouts/_body_sticky_footer.html.erb
+index 46f83f6..cd56ace 100644
+--- a/app/views/layouts/_body_sticky_footer.html.erb
++++ b/app/views/layouts/_body_sticky_footer.html.erb
+@@ -13,7 +13,7 @@
+ 
+   <footer>
+     <div class="navbar navbar-fixed-bottom">
+-      <p>&copy; FeeWise 2012</p>
++      <p>&copy; feeWISE 2012</p>
+       <div class="navbar-inner">
+         <div class="container">
+           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+diff --git a/app/views/layouts/_head_accordion.html.erb b/app/views/layouts/_head_accordion.html.erb
+index 91179ed..cb8ecd5 100644
+--- a/app/views/layouts/_head_accordion.html.erb
++++ b/app/views/layouts/_head_accordion.html.erb
+@@ -1,7 +1,7 @@
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-    <title><%= content_for?(:title) ? yield(:title) : "FeeWise" %></title>
++    <title><%= content_for?(:title) ? yield(:title) : "feeWISE" %></title>
+     <%= csrf_meta_tags %>
+     <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
+     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+@@ -12,6 +12,7 @@
+     <![endif]-->
+ 
+     <%= stylesheet_link_tag "application", :media => "all" %>
++    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.23/themes/base/jquery-ui.css" type="text/css" media="all" />
+ 
+     <!-- For third-generation iPad with high-resolution Retina display: -->
+     <!-- Size should be 144 x 144 pixels -->
+diff --git a/app/views/layouts/_head_slider.html.erb b/app/views/layouts/_head_slider.html.erb
+index 91179ed..02f5d80 100644
+--- a/app/views/layouts/_head_slider.html.erb
++++ b/app/views/layouts/_head_slider.html.erb
+@@ -1,7 +1,7 @@
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-    <title><%= content_for?(:title) ? yield(:title) : "FeeWise" %></title>
++    <title><%= content_for?(:title) ? yield(:title) : "feeWISE" %></title>
+     <%= csrf_meta_tags %>
+     <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
+     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+diff --git a/app/views/layouts/_head_sticky_footer.html.erb b/app/views/layouts/_head_sticky_footer.html.erb
+index 91179ed..02f5d80 100644
+--- a/app/views/layouts/_head_sticky_footer.html.erb
++++ b/app/views/layouts/_head_sticky_footer.html.erb
+@@ -1,7 +1,7 @@
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-    <title><%= content_for?(:title) ? yield(:title) : "FeeWise" %></title>
++    <title><%= content_for?(:title) ? yield(:title) : "feeWISE" %></title>
+     <%= csrf_meta_tags %>
+     <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
+     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+diff --git a/app/views/layouts/_tempfooter.html.erb b/app/views/layouts/_tempfooter.html.erb
+index 7bea53a..d71fd25 100644
+--- a/app/views/layouts/_tempfooter.html.erb
++++ b/app/views/layouts/_tempfooter.html.erb
+@@ -5,11 +5,11 @@
+       <li class="active"><a href="#">Home</a></li>
+ 
+ 
+-            <h3>FeeWise</h3>
++            <h3>feeWISE</h3>
+             <!-- <ul> -->
+               <li><a href="/">Home</a></li>
+               <li><%= link_to 'How It Works', '/how_it_works' %></li>
+-              <li><%= link_to 'Why FeeWise', '/why_feewise' %></li>
++              <li><%= link_to 'Why feeWISE', '/why_feewise' %></li>
+               <li><%= link_to 'Account / Sign In', '/sign_in' %></li>
+             <!-- </ul> -->
+ 
+@@ -33,7 +33,7 @@
+             <!-- </ul> -->
+ 
+ 
+-              <a href="http://www.facebook.com/FeeWise" target="_blank">
++              <a href="http://www.facebook.com/feeWISE" target="_blank">
+                 <%= image_tag("sm-icon-facebook.jpg",  title: "Like us on Facebook", alt: "Facebook", class: "social-icons") %>
+               </a>
+               <a href="http://twitter.com/feewise" target="_blank">
+@@ -44,7 +44,7 @@
+ 
+ 
+             <!-- <ul> -->
+-              <li>Copyright &copy; 2012 FeeWise. All Rights Reserved.</li>
++              <li>Copyright &copy; 2012 feeWISE. All Rights Reserved.</li>
+               <li><%= link_to "Privacy Policy", '/privacy_policy' %> &nbsp;|&nbsp; <%= link_to "Terms of Use", '/terms_of_use' %></li>
+               <li><%= link_to "Equal Housing Opportunity", '/equal_housing_opportunity' %></li>
+             <!-- </ul> -->
+diff --git a/app/views/layouts/application.html.erb.orig b/app/views/layouts/application.html.erb.orig
+index b391a9e..79af3e8 100644
+--- a/app/views/layouts/application.html.erb.orig
++++ b/app/views/layouts/application.html.erb.orig
+@@ -4,7 +4,7 @@
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-    <title><%= content_for?(:title) ? yield(:title) : "FeeWise" %></title>
++    <title><%= content_for?(:title) ? yield(:title) : "feeWISE" %></title>
+     <%= csrf_meta_tags %>
+ 
+     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+@@ -44,7 +44,7 @@
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </a>
+-          <!-- <a class="brand" href="#">FeeWise</a> -->
++          <!-- <a class="brand" href="#">feeWISE</a> -->
+           <%= link_to image_tag( "FeeWiseLogo4.png", :size => "150x300"), "/", :class => "Brand" %>
+           <!-- <div class="container nav-collapse"> -->
+           <!--   <ul class="nav"> -->
+@@ -101,7 +101,7 @@
+           <a href="/">Home</a>
+         </li>
+         <li><%= link_to "How It Works", '/how_it_works' %> </li>
+-        <li><%= link_to "Why FeeWise", '/why_feewise' %></li>
++        <li><%= link_to "Why feeWISE", '/why_feewise' %></li>
+         <li><%= link_to "About Us", '/about_us' -%></li>
+         <li><%= link_to "Support / FAQ", '/support' %></li>
+       </ul>
+@@ -121,7 +121,7 @@
+                 <!-- <h3>Sidebar</h3> -->
+                 <%= link_to 'BUY!', new_account_path, :class => "btn btn-warning btn-block btn-large whitelink" %>
+ 
+-                <%= t ".fe_generic_sidebar", default: "<h3>FeeWise Pledge</h3><p>If the experience using your FeeWise ever lets you down, we'll make it right or return your purchase. Simple as that.</p><br /><h3>We're Here for You</h3><p>If you want to talk to someone, call us at 917-720-4242. Also, check out our FAQ for answers to some questions.</p>" %>
++                <%= t ".fe_generic_sidebar", default: "<h3>feeWISE Pledge</h3><p>If the experience using your feeWISE ever lets you down, we'll make it right or return your purchase. Simple as that.</p><br /><h3>We're Here for You</h3><p>If you want to talk to someone, call us at 917-720-4242. Also, check out our FAQ for answers to some questions.</p>" %>
+                 <%= link_to "Click to learn more on How It Works!", '/how_it_works' %>
+ 
+               <!-- <div class="well sidebar-nav"> -->
+@@ -140,7 +140,7 @@
+       </div><!--/content-->
+ 
+       <footer>
+-        <p>&copy; FeeWise 2012</p>
++        <p>&copy; feeWISE 2012</p>
+       </footer>
+ 
+     </div> <!-- /container -->
+@@ -153,7 +153,7 @@
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </a>
+-          <!-- <a class="brand" href="/">FeeWise</a> -->
++          <!-- <a class="brand" href="/">feeWISE</a> -->
+           <div class="nav-collapse">
+ 
+             <ul class="nav">
+@@ -168,7 +168,7 @@
+ 
+ 
+               <li class="dropdown" id="accountmenu">
+-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">FeeWise<b class="caret"></b></a>
++                <a class="dropdown-toggle" data-toggle="dropdown" href="#">feeWISE<b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+ 
+ 
+@@ -176,7 +176,7 @@
+ 
+                   <li><a href="/">Home</a></li>
+                   <li><%= link_to 'How It Works', '/how_it_works' %></li>
+-                  <li><%= link_to 'Why FeeWise', '/why_feewise' %></li>
++                  <li><%= link_to 'Why feeWISE', '/why_feewise' %></li>
+                   <li><%= link_to 'Account / Sign In', '/sign_in' %></li>
+ 
+ 
+@@ -216,7 +216,7 @@
+                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Legal<b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+ 
+-                  <li><a>Copyright &copy; 2012 FeeWise. All Rights Reserved.</a></li>
++                  <li><a>Copyright &copy; 2012 feeWISE. All Rights Reserved.</a></li>
+ 
+                   <li><%= link_to "Privacy Policy", '/privacy_policy' %>  <%= link_to "Terms of Use", '/terms_of_use' %></li>
+                   <li><%= link_to "Equal Housing Opportunity", '/equal_housing_opportunity' %></li>
+diff --git a/app/views/layouts/filter_analytics_layout.html.erb b/app/views/layouts/filter_analytics_layout.html.erb
+index 556dc64..077938b 100644
+--- a/app/views/layouts/filter_analytics_layout.html.erb
++++ b/app/views/layouts/filter_analytics_layout.html.erb
+@@ -1,7 +1,7 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+-    <title>FeeWise</title>
++    <title>feeWISE</title>
+     <%= javascript_include_tag "filter_analytics" %>
+ 
+     <link href="https://www.leadplace.com/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+diff --git a/app/views/layouts/no_layout.html.erb b/app/views/layouts/no_layout.html.erb
+index d6152cd..868a396 100644
+--- a/app/views/layouts/no_layout.html.erb
++++ b/app/views/layouts/no_layout.html.erb
+@@ -3,7 +3,7 @@
+   <head>
+ 
+ 
+-    <title>FeeWise</title>
++    <title>feeWISE</title>
+     <link href="https://www.leadplace.com/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+ 
+     <script type="text/javascript">
+diff --git a/app/views/layouts/shortener.html.erb b/app/views/layouts/shortener.html.erb
+index 0b4dcb1..a73b533 100644
+--- a/app/views/layouts/shortener.html.erb
++++ b/app/views/layouts/shortener.html.erb
+@@ -17,7 +17,7 @@
+       _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+     </script>
+ 
+-    <title>FeeWise Admin</title>
++    <title>feeWISE Admin</title>
+     <!-- < %= stylesheet_link_tag    "application", :media => "all" %> -->
+     <!-- < %= stylesheet_link_tag    "application", :media => "all" %> -->
+     <!-- < %= javascript_include_tag  "application" %> -->
+diff --git a/app/views/layouts/stripe.html.erb b/app/views/layouts/stripe.html.erb
+index b6bae7d..331014a 100644
+--- a/app/views/layouts/stripe.html.erb
++++ b/app/views/layouts/stripe.html.erb
+@@ -4,7 +4,7 @@
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-    <title><%= content_for?(:title) ? yield(:title) : "FeeWise" %></title>
++    <title><%= content_for?(:title) ? yield(:title) : "feeWISE" %></title>
+ 
+     <%= csrf_meta_tags %>
+ 
+@@ -45,7 +45,7 @@
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </a>
+-          <!-- <a class="brand" href="#">FeeWise</a> -->
++          <!-- <a class="brand" href="#">feeWISE</a> -->
+           <%= link_to image_tag( "FeeWiseLogo4.png", :size => "150x300"), "/", :class => "Brand" %>
+           <!-- <div class="container nav-collapse"> -->
+           <!--   <ul class="nav"> -->
+@@ -102,7 +102,7 @@
+           <a href="/">Home</a>
+         </li>
+         <li><%= link_to "How It Works", '/how_it_works' %> </li>
+-        <li><%= link_to "Why FeeWise", '/why_feewise' %></li>
++        <li><%= link_to "Why feeWISE", '/why_feewise' %></li>
+         <li><%= link_to "About Us", '/about_us' -%></li>
+         <li><%= link_to "Support / FAQ", '/support' %></li>
+       </ul>
+@@ -122,7 +122,7 @@
+                 <!-- <h3>Sidebar</h3> -->
+                 <%= link_to 'BUY!', new_account_path, :class => "btn btn-warning btn-block btn-large whitelink" %>
+ 
+-                <%= t ".fe_generic_sidebar", default: "<h3>FeeWise Pledge</h3><p>If the experience using your FeeWise ever lets you down, we'll make it right or return your purchase. Simple as that.</p><br /><h3>We're Here for You</h3><p>If you want to talk to someone, call us at 917-720-4242. Also, check out our FAQ for answers to some questions.</p>" %>
++                <%= t ".fe_generic_sidebar", default: "<h3>feeWISE Pledge</h3><p>If the experience using your feeWISE ever lets you down, we'll make it right or return your purchase. Simple as that.</p><br /><h3>We're Here for You</h3><p>If you want to talk to someone, call us at 917-720-4242. Also, check out our FAQ for answers to some questions.</p>" %>
+                 <%= link_to "Click to learn more on How It Works!", '/how_it_works' %>
+ 
+               <!-- <div class="well sidebar-nav"> -->
+@@ -141,7 +141,7 @@
+       </div><!--/content-->
+ 
+       <footer>
+-        <p>&copy; FeeWise 2012</p>
++        <p>&copy; feeWISE 2012</p>
+       </footer>
+ 
+     </div> <!-- /container -->
+@@ -154,7 +154,7 @@
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </a>
+-          <!-- <a class="brand" href="/">FeeWise</a> -->
++          <!-- <a class="brand" href="/">feeWISE</a> -->
+           <div class="nav-collapse">
+ 
+             <ul class="nav">
+@@ -169,7 +169,7 @@
+ 
+ 
+               <li class="dropdown" id="accountmenu">
+-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">FeeWise<b class="caret"></b></a>
++                <a class="dropdown-toggle" data-toggle="dropdown" href="#">feeWISE<b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+ 
+ 
+@@ -177,7 +177,7 @@
+ 
+                   <li><a href="/">Home</a></li>
+                   <li><%= link_to 'How It Works', '/how_it_works' %></li>
+-                  <li><%= link_to 'Why FeeWise', '/why_feewise' %></li>
++                  <li><%= link_to 'Why feeWISE', '/why_feewise' %></li>
+                   <li><%= link_to 'Account / Sign In', '/sign_in' %></li>
+ 
+ 
+@@ -217,7 +217,7 @@
+                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Legal<b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+ 
+-                  <li><a>Copyright &copy; 2012 FeeWise. All Rights Reserved.</a></li>
++                  <li><a>Copyright &copy; 2012 feeWISE. All Rights Reserved.</a></li>
+ 
+                   <li><%= link_to "Privacy Policy", '/privacy_policy' %>  <%= link_to "Terms of Use", '/terms_of_use' %></li>
+                   <li><%= link_to "Equal Housing Opportunity", '/equal_housing_opportunity' %></li>
+diff --git a/app/views/static_pages/_accordion.html.erb b/app/views/static_pages/_accordion.html.erb
+index 02df20b..bc22dff 100644
+--- a/app/views/static_pages/_accordion.html.erb
++++ b/app/views/static_pages/_accordion.html.erb
+@@ -14,10 +14,10 @@
+   <div class='well'>
+ 
+     <div class="jqui_accordion">
+-      <h3><a href="#"> What is FeeWise?</a></h3>
++      <h3><a href="#"> What is feeWISE?</a></h3>
+       <div>
+ 
+-        <p> FeeWise is your guide to being a more savvy home buyer and/or seller.<br />
++        <p> FeeWISE is your guide to being a more savvy home buyer and/or seller.<br />
+           What you don't know can cost you.  Fortunately, what you do know can save you a bundle.</p>
+       </div>
+ 
+@@ -59,10 +59,10 @@
+           If you have any, ask us.</p>
+       </div>
+ 
+-      <h3><a href="#">Be FeeWise Now</a></h3>
++      <h3><a href="#">Be feeWISE Now</a></h3>
+       <div>
+ 
+-        <p>If you are serious about getting yourself the best possible outcome, then FeeWise was made for you.</p>
++        <p>If you are serious about getting yourself the best possible outcome, then feeWISE was made for you.</p>
+         <p>When you are all done, you can be proud of yourself for being far more savvy than most.</p>
+         <p>Not satisfied? Just let us know and we will refund your membership fee. So there's no risk.<br />
+           In fact, the risk you're already taking is going down. You will have a better sense what is happening.</p>
+diff --git a/app/views/static_pages/_bootstrap_carousel.html.erb b/app/views/static_pages/_bootstrap_carousel.html.erb
+index 6e7de0f..7368696 100644
+--- a/app/views/static_pages/_bootstrap_carousel.html.erb
++++ b/app/views/static_pages/_bootstrap_carousel.html.erb
+@@ -10,6 +10,6 @@
+   <div class="span6 offset1">
+     <fieldset id="" class=""> <legend></legend> </fieldset> <!-- SEPARATOR -->
+     <!-- BODY -->
+-    <p> <%= t ".fe_landing_1", default: "<b>Y</b>ou are buying in this market because you want to get a good deal.  To get a good deal, you cannot remain in the dark about what you are really paying.  That’s where we can help.<br>We show you how to buy, step by step. &nbsp;How to know who the professional you are talking to is really working for. &nbsp; Questions you must ask. &nbsp;Insider tips. &nbsp;Hacks. &nbsp;Rebates<br><br>Our promise: &nbsp;If you make a real estate purchase following our process in the next 12 months and we cannot save you at least $1000 you get two times your money back.<br><br>Be smart. &nbsp;Be informed. &nbsp;Be FeeWise." %> </p>
++    <p> <%= t ".fe_landing_1", default: "<b>Y</b>ou are buying in this market because you want to get a good deal.  To get a good deal, you cannot remain in the dark about what you are really paying.  That’s where we can help.<br>We show you how to buy, step by step. &nbsp;How to know who the professional you are talking to is really working for. &nbsp; Questions you must ask. &nbsp;Insider tips. &nbsp;Hacks. &nbsp;Rebates<br><br>Our promise: &nbsp;If you make a real estate purchase following our process in the next 12 months and we cannot save you at least $1000 you get two times your money back.<br><br>Be smart. &nbsp;Be informed. &nbsp;Be feeWISE." %> </p>
+   </div>
+ </div>
+diff --git a/app/views/static_pages/_dynamic_body.html.erb.orig b/app/views/static_pages/_dynamic_body.html.erb.orig
+index c7a89c3..5138940 100644
+--- a/app/views/static_pages/_dynamic_body.html.erb.orig
++++ b/app/views/static_pages/_dynamic_body.html.erb.orig
+@@ -71,15 +71,15 @@
+         </div>
+ 
+         <div class="item">
+-          <h2>FeeWise Can Help</h2>
++          <h2>FeeWISE Can Help</h2>
+         </div>
+ 
+         <div class="item">
+-          <h2>FeeWise Can Help You get Money back when you close.</h2>
++          <h2>FeeWISE Can Help You get Money back when you close.</h2>
+         </div>
+ 
+         <div class="item">
+-          <h2>FeeWise Can Help You get Money back by pre-negotiating with Brokers.</h2>
++          <h2>FeeWISE Can Help You get Money back by pre-negotiating with Brokers.</h2>
+         </div>
+ 
+         <div class="item">
+@@ -116,7 +116,7 @@
+ </div>
+ 
+ 
+-<p> <%= t ".fe_landing_1", default: "<b>Y</b>ou are buying in this market because you want to get a good deal.  To get a good deal, you cannot remain in the dark about what you are really paying.  That’s where we can help.<br>We show you how to buy, step by step. &nbsp;How to know who the professional you are talking to is really working for. &nbsp; Questions you must ask. &nbsp;Insider tips. &nbsp;Hacks. &nbsp;Rebates<br><br>Our promise: &nbsp;If you make a real estate purchase following our process in the next 12 months and we cannot save you at least $1000 you get two times your money back.<br><br>Be smart. &nbsp;Be informed. &nbsp;Be FeeWise." %> </p>
++<p> <%= t ".fe_landing_1", default: "<b>Y</b>ou are buying in this market because you want to get a good deal.  To get a good deal, you cannot remain in the dark about what you are really paying.  That’s where we can help.<br>We show you how to buy, step by step. &nbsp;How to know who the professional you are talking to is really working for. &nbsp; Questions you must ask. &nbsp;Insider tips. &nbsp;Hacks. &nbsp;Rebates<br><br>Our promise: &nbsp;If you make a real estate purchase following our process in the next 12 months and we cannot save you at least $1000 you get two times your money back.<br><br>Be smart. &nbsp;Be informed. &nbsp;Be feeWISE." %> </p>
+ <br />
+ <!-- <h4>Join our mailing list</h4> -->
+ <!-- < %= render 'subscriptions/form' %> -->
+diff --git a/app/views/static_pages/_static_carousel.html.erb b/app/views/static_pages/_static_carousel.html.erb
+index 109ba00..21abf7f 100644
+--- a/app/views/static_pages/_static_carousel.html.erb
++++ b/app/views/static_pages/_static_carousel.html.erb
+@@ -74,7 +74,7 @@
+   </div>
+ 
+   <div class="item">
+-    <h3>FeeWise can help you get money back when you close.<%= image_tag "finance_piggy_bank_coins_lineart.png", :title => "piggy",  :align =>"right", :size => "75x150" %></h3>
++    <h3>FeeWISE can help you get money back when you close.<%= image_tag "finance_piggy_bank_coins_lineart.png", :title => "piggy",  :align =>"right", :size => "75x150" %></h3>
+   </div>
+ 
+   <div class="item">
+diff --git a/app/views/static_pages/_twitter_and_fb.html.erb b/app/views/static_pages/_twitter_and_fb.html.erb
+index 278a6bf..0233d75 100644
+--- a/app/views/static_pages/_twitter_and_fb.html.erb
++++ b/app/views/static_pages/_twitter_and_fb.html.erb
+@@ -1,5 +1,5 @@
+   <div id="offer-share">
+     <div class="label"><strong>Share:</strong></div>
+-    <%= link_to image_tag("offer-icon-facebook.gif", {title: "Like us on Facebook", alt: "Facebook", class: "social-icons"} ), "http://www.facebook.com/FeeWise" %>
++    <%= link_to image_tag("offer-icon-facebook.gif", {title: "Like us on Facebook", alt: "Facebook", class: "social-icons"} ), "http://www.facebook.com/feeWISE" %>
+     <%= link_to image_tag("offer-icon-twitter.gif",  title: "Follow us on Twitter", alt: "Twitter", class: "social-icons"), "http://twitter.com/feewise" %>
+   </div>
+diff --git a/app/views/static_pages/about_us.html.erb b/app/views/static_pages/about_us.html.erb
+index a315a02..1476cca 100644
+--- a/app/views/static_pages/about_us.html.erb
++++ b/app/views/static_pages/about_us.html.erb
+@@ -8,11 +8,11 @@
+ 
+       <%= t ".fe_about_us", default: "<p>We know that completing a real estate transaction can be confusing, more expensive than you anticipated, and sometimes even amazingly frustrating&#8212;and that&rsquo;s when you get it right!</p>
+ 
+-<p>We understand and share your frustrations, and it&rsquo;s the driving force behind why we develop FeeWise.</p> 
++<p>We understand and share your frustrations, and it&rsquo;s the driving force behind why we develop feeWISE.</p>
+ 
+-<p>We are an entrepreneurial team that came from backgrounds in the real estate, design, and tech worlds that is tired of the business-as-usual tactics in the real estate industry. We are passionate about delivering you the know-how, savings, and the satisfaction of helping you navigate through a convoluted system to ultimately have it work for your benefit&#8212;not the other way around.</p> 
++<p>We are an entrepreneurial team that came from backgrounds in the real estate, design, and tech worlds that is tired of the business-as-usual tactics in the real estate industry. We are passionate about delivering you the know-how, savings, and the satisfaction of helping you navigate through a convoluted system to ultimately have it work for your benefit&#8212;not the other way around.</p>
+ 
+-<p>Customer first&#8212;the way it should be. That&rsquo;s FeeWise.</p>" %>
++<p>Customer first&#8212;the way it should be. That&rsquo;s feeWISE.</p>" %>
+ 
+     </div>
+   </div>
+diff --git a/app/views/static_pages/how_it_works.html.erb b/app/views/static_pages/how_it_works.html.erb
+index b18c3ff..b44ede9 100644
+--- a/app/views/static_pages/how_it_works.html.erb
++++ b/app/views/static_pages/how_it_works.html.erb
+@@ -5,7 +5,7 @@
+     <%= render :partial => "static_pages/generic_sidebar" %>
+     <div class="one-col"><!-- --></div>
+     <div class="five-col">
+-      <%= t ".fe_how_it_works", default: "<p><strong>Our program provides knowledge and guidance that is designed to put money back into your pocket. The bottom line is that we do NOT increase the cost of your future home by $0.01&#8212;all the while you gain education, expertise, and more notably, cash back from FeeWise when you complete the transaction for your property.</strong></p><h3>STEP 1</h3><p>Sign up for our program, and tell us a few simple details about your future home</strong> (ie. When to Purchase, Location, Price Range, etc.).</p><h3>STEP2</h3><p><strong>By understanding your preference, we help match the right real estate professionals that fit your particular goals.</strong></p><h3>STEP 3</h3><p><strong>When your deal is complete, your agent pays us a referral fee in which we will split the commission 50-50 with you.*</strong></p><p><em>* Please note that our referral rebate offer is valid only on real estate transactions in Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Kentucky, Maine, Maryland, Massachusetts, Michigan, Minnesota, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Pennsylvania, Rhode Island, South Carolina, South Dakota, Texas, Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin, and Wyoming.</em></p>" %>
++      <%= t ".fe_how_it_works", default: "<p><strong>Our program provides knowledge and guidance that is designed to put money back into your pocket. The bottom line is that we do NOT increase the cost of your future home by $0.01&#8212;all the while you gain education, expertise, and more notably, cash back from feeWISE when you complete the transaction for your property.</strong></p><h3>STEP 1</h3><p>Sign up for our program, and tell us a few simple details about your future home</strong> (ie. When to Purchase, Location, Price Range, etc.).</p><h3>STEP2</h3><p><strong>By understanding your preference, we help match the right real estate professionals that fit your particular goals.</strong></p><h3>STEP 3</h3><p><strong>When your deal is complete, your agent pays us a referral fee in which we will split the commission 50-50 with you.*</strong></p><p><em>* Please note that our referral rebate offer is valid only on real estate transactions in Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Kentucky, Maine, Maryland, Massachusetts, Michigan, Minnesota, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Pennsylvania, Rhode Island, South Carolina, South Dakota, Texas, Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin, and Wyoming.</em></p>" %>
+     </div>
+   </div>
+   <br class="clearBoth" />
+diff --git a/app/views/static_pages/index.html.erb.orig.2 b/app/views/static_pages/index.html.erb.orig.2
+index 03704e6..5a2c17a 100644
+--- a/app/views/static_pages/index.html.erb.orig.2
++++ b/app/views/static_pages/index.html.erb.orig.2
+@@ -57,15 +57,15 @@
+         </div>
+ 
+         <div class="item slideheight well">
+-          <h2>FeeWise Can Help</h2>
++          <h2>FeeWISE Can Help</h2>
+         </div>
+ 
+         <div class="item slideheight well">
+-          <h2>FeeWise Can Help You get Money back when you close</h2>
++          <h2>FeeWISE Can Help You get Money back when you close</h2>
+         </div>
+ 
+         <div class="item slideheight well">
+-          <h2>FeeWise Can Help You get Money back by pre-negotiating with Brokers/Agents</h2>
++          <h2>FeeWISE Can Help You get Money back by pre-negotiating with Brokers/Agents</h2>
+         </div>
+ 
+         <div class="item slideheight well">
+@@ -98,7 +98,7 @@
+ 
+ <div class="row">
+ <div class="span6 offset1">
+-<p> <%= t ".fe_landing_1", default: "<b>Y</b>ou are buying in this market because you want to get a good deal.  To get a good deal, you cannot remain in the dark about what you are really paying.  That’s where we can help.<br>We show you how to buy, step by step. &nbsp;How to know who the professional you are talking to is really working for. &nbsp; Questions you must ask. &nbsp;Insider tips. &nbsp;Hacks. &nbsp;Rebates<br><br>Our promise: &nbsp;If you make a real estate purchase following our process in the next 12 months and we cannot save you at least $1000 you get two times your money back.<br><br>Be smart. &nbsp;Be informed. &nbsp;Be FeeWise." %> </p>
++<p> <%= t ".fe_landing_1", default: "<b>Y</b>ou are buying in this market because you want to get a good deal.  To get a good deal, you cannot remain in the dark about what you are really paying.  That’s where we can help.<br>We show you how to buy, step by step. &nbsp;How to know who the professional you are talking to is really working for. &nbsp; Questions you must ask. &nbsp;Insider tips. &nbsp;Hacks. &nbsp;Rebates<br><br>Our promise: &nbsp;If you make a real estate purchase following our process in the next 12 months and we cannot save you at least $1000 you get two times your money back.<br><br>Be smart. &nbsp;Be informed. &nbsp;Be feeWISE." %> </p>
+ </div>
+ 
+ </div>
+diff --git a/app/views/static_pages/investors.html.erb b/app/views/static_pages/investors.html.erb
+index 1ae39f8..d8c7c50 100644
+--- a/app/views/static_pages/investors.html.erb
++++ b/app/views/static_pages/investors.html.erb
+@@ -12,7 +12,7 @@
+     <div class="one-col"><!-- --></div>
+     <div class="five-col">
+ 
+-      <%= t ".fe_investors", default: "<p>FeeWise can save home buyers hundreds of millions - and make a tidy profit doing so. Our parent company will do even more: the impact may be worth 5% of GDP.</p>
++      <%= t ".fe_investors", default: "<p>FeeWISE can save home buyers hundreds of millions - and make a tidy profit doing so. Our parent company will do even more: the impact may be worth 5% of GDP.</p>
+ 
+ <p>Do not make another investment without talking to us first!</p>" %>
+ 
+diff --git a/app/views/static_pages/thank_you.html.erb b/app/views/static_pages/thank_you.html.erb
+index ff5859d..d3ad99e 100644
+--- a/app/views/static_pages/thank_you.html.erb
++++ b/app/views/static_pages/thank_you.html.erb
+@@ -7,7 +7,7 @@
+ 
+ <br /><br />
+ <p>
+-  <a href="http://www.facebook.com/FeeWise" target="_blank">
++  <a href="http://www.facebook.com/feeWISE" target="_blank">
+     <img src="/assets/lg-icon-facebook.jpg" title="Like us on Facebook" alt="Facebook" class="social-icons" /></a>
+   <a href="http://twitter.com/feewise" target="_blank">
+     <img src="/assets/lg-icon-twitter.jpg" title="Follow us on Twitter" alt="Twitter" class="social-icons" /></a>
+diff --git a/app/views/static_pages/why_feewise.html.erb b/app/views/static_pages/why_feewise.html.erb
+index 4e295b9..ba5ee0e 100644
+--- a/app/views/static_pages/why_feewise.html.erb
++++ b/app/views/static_pages/why_feewise.html.erb
+@@ -1,5 +1,5 @@
+ 
+-<%= display_heading :heading_text => 'Why FeeWise' %>
++<%= display_heading :heading_text => 'Why feeWISE' %>
+ <!-- BEGIN CONTENT ####################-->
+ <div id="content" style="">
+   <div id="content-body">
+@@ -8,7 +8,7 @@
+     <div class="one-col"><!-- --></div>
+     <div class="five-col">
+ 
+-      <%= t ".fe_why_feewise", default: "<p><strong>Why FeeWise? Because the fees are too d@mn high. And the consequences can be an enormous cost to you!</strong></p><p>Our approach is simple, we simply put you&#8212;the customers first&#8212;ahead of the commissions. Plenty of home buyers received less than completely honest advice, because certain professionals prey upon your confusion with the complexity of the real estate market. That's why FeeWise is here. We believe that home-buying should be simpler, less stressful, and cheaper for buyers and sellers. We measure our success not by our bottom line, but by how much we save and put back into your pocket.</p>" %>
++      <%= t ".fe_why_feewise", default: "<p><strong>Why feeWISE? Because the fees are too d@mn high. And the consequences can be an enormous cost to you!</strong></p><p>Our approach is simple, we simply put you&#8212;the customers first&#8212;ahead of the commissions. Plenty of home buyers received less than completely honest advice, because certain professionals prey upon your confusion with the complexity of the real estate market. That's why feeWISE is here. We believe that home-buying should be simpler, less stressful, and cheaper for buyers and sellers. We measure our success not by our bottom line, but by how much we save and put back into your pocket.</p>" %>
+ 
+     </div>
+   </div>
+diff --git a/app/views/user_mailer/customer_registration_confirmation.html.erb b/app/views/user_mailer/customer_registration_confirmation.html.erb
+index 5f7366c..aae092d 100644
+--- a/app/views/user_mailer/customer_registration_confirmation.html.erb
++++ b/app/views/user_mailer/customer_registration_confirmation.html.erb
+@@ -8,7 +8,7 @@
+ 
+     <!-- customer signup confirmation -->
+ 
+-    <h1>Thank you for registering with FeeWise, <%= @user.full_name %></h1>
++    <h1>Thank you for registering with feeWISE, <%= @user.full_name %></h1>
+     <p>
+       You have successfully registered with feewise.com,
+ 
+diff --git a/app/views/user_mailer/customer_registration_confirmation.text.erb b/app/views/user_mailer/customer_registration_confirmation.text.erb
+index 0c3a7bf..32770f1 100644
+--- a/app/views/user_mailer/customer_registration_confirmation.text.erb
++++ b/app/views/user_mailer/customer_registration_confirmation.text.erb
+@@ -1,4 +1,4 @@
+-Thank you for registering with FeeWise, <%= @user.full_name %>
++Thank you for registering with feeWISE, <%= @user.full_name %>
+ ==============================================================
+ 
+ You have successfully registered with feewise.com, with account number <%= @user.id_with_card_token %>
+diff --git a/app/views/user_mailer/welcome_email.html.erb b/app/views/user_mailer/welcome_email.html.erb
+index f7a6584..ee92117 100644
+--- a/app/views/user_mailer/welcome_email.html.erb
++++ b/app/views/user_mailer/welcome_email.html.erb
+@@ -8,7 +8,7 @@
+ 
+     <!-- customer signup confirmation -->
+ 
+-    <h1>Welcome to FeeWise, <%= @user.full_name %></h1>
++    <h1>Welcome to feeWISE, <%= @user.full_name %></h1>
+     <p>
+       You have successfully signed up to feewise.com,
+       your username is: <%= @user.email %>.<br/>
+diff --git a/rr.txt b/rr.txt
+index b6ccfea..110fa4b 100644
+--- a/rr.txt
++++ b/rr.txt
+@@ -1,4 +1,7 @@
+-
++** [Copycopter] [P:89407] [T:70346481028320] Client 2.0.1 ready
++** [Copycopter] [P:89407] [T:70346481028320] Environment Info: [Ruby: 1.9.3] [Env: ]
++** [Copycopter] [P:89407] [T:70346481028320] Waiting for first download
++** [Copycopter] [P:89407] [T:70346517712680] Downloaded translations
+                          testscaffolds GET        /testscaffolds(.:format)                          testscaffolds#index
+                                        POST       /testscaffolds(.:format)                          testscaffolds#create
+                       new_testscaffold GET        /testscaffolds/new(.:format)                      testscaffolds#new
+@@ -155,12 +158,13 @@
+                      new_user_password GET        /users/password/new(.:format)                     devise/passwords#new
+                     edit_user_password GET        /users/password/edit(.:format)                    devise/passwords#edit
+                                        PUT        /users/password(.:format)                         devise/passwords#update
+-              cancel_user_registration GET        /users/cancel(.:format)                           devise/registrations#cancel
+-                     user_registration POST       /users(.:format)                                  devise/registrations#create
+-                 new_user_registration GET        /users/sign_up(.:format)                          devise/registrations#new
+-                edit_user_registration GET        /users/edit(.:format)                             devise/registrations#edit
+-                                       PUT        /users(.:format)                                  devise/registrations#update
+-                                       DELETE     /users(.:format)                                  devise/registrations#destroy
++              cancel_user_registration GET        /users/cancel(.:format)                           my_devise/registrations#cancel
++                     user_registration POST       /users(.:format)                                  my_devise/registrations#create
++                 new_user_registration GET        /users/sign_up(.:format)                          my_devise/registrations#new
++                edit_user_registration GET        /users/edit(.:format)                             my_devise/registrations#edit
++                                       PUT        /users(.:format)                                  my_devise/registrations#update
++                                       DELETE     /users(.:format)                                  my_devise/registrations#destroy
++                       split_dashboard            /split                                            Split::Dashboard
+                    static_pages_create GET        /static_pages/create(.:format)                    static_pages#create
+                   static_pages_support GET        /static_pages/support(.:format)                   static_pages#support
+                  static_pages_purchase GET        /static_pages/purchase(.:format)                  static_pages#purchase
+@@ -179,6 +183,7 @@
+ static_pages_equal_housing_opportunity GET        /static_pages/equal_housing_opportunity(.:format) static_pages#equal_housing_opportunity
+                      static_pages_team GET        /static_pages/team(.:format)                      static_pages#team
+                           homes_home_a GET        /homes/home_a(.:format)                           homes#home_a
++                          homes_home_b GET        /homes/home_b(.:format)                           homes#home_b
+               static_pages_run_restart GET        /static_pages/run_restart(.:format)               static_pages#run_restart
+                           static_pages GET        /static_pages(.:format)                           static_pages#index
+                                        POST       /static_pages(.:format)                           static_pages#create
+@@ -197,4 +202,4 @@ static_pages_equal_housing_opportunity GET        /static_pages/equal_housing_op
+                                   root            /                                                 static_pages#index
+                                   root            /                                                 static_pages#index
+                                                   /:action(.:format)                                static_pages#:action
+-** [Copycopter] [P:27253] [T:70163756174560] Timeout::Error: execution expired
++** [Copycopter] [P:89407] [T:70346481028320] Timeout::Error: execution expired

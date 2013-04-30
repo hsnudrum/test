@@ -1,0 +1,60 @@
+<%= display_heading :heading_text => "Purchase Profile for #{current_user.full_name}" %>
+
+<!-- BEGIN CONTENT ####################-->
+<div id="content" style="">
+  <div id="content-body">
+    <%= render :partial => "static_pages/generic_sidebar" %>
+    <div class="one-col"><!-- --></div>
+    <div class="five-col">
+      <!-- <p>Tell us a little bit about what you are looking to purchase.</p> -->
+      <%= render :partial => "about_header" %>
+      <br />
+      <%= link_to "Edit Preferences", edit_purchase_preference_path( current_user.purchase_preference ) %>
+      <br />      <br />
+
+      <%= render 'read_form' %>
+      <br />
+      * This offer is void where prohibited: AL, AK, IA, KS, LA, MS, MO, OK, OR and TN for both home sellers and buyers, and NJ for home sellers.
+    </div>
+  </div>
+  <br class="clearBoth" />
+</div>
+<!-- END CONTENT ####################-->
+
+
+
+<!-- <p id="notice">< %= notice %></p> -->
+
+<!-- <p> -->
+<!--   <b>Location:</b> -->
+<!--   < %= @purchase_preference.location %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Min price:</b> -->
+<!--   < %= @purchase_preference.min_price %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Max price:</b> -->
+<!--   < %= @purchase_preference.max_price %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Time frame:</b> -->
+<!--   < %= @purchase_preference.time_frame %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>Daytime phone:</b> -->
+<!--   < %= @purchase_preference.daytime_phone %> -->
+<!-- </p> -->
+
+<!-- <p> -->
+<!--   <b>User:</b> -->
+<!--   < %= @purchase_preference.user %> -->
+<!-- </p> -->
+
+
+<!-- < %= link_to 'Edit', edit_purchase_preference_path(@purchase_preference) %> | -->
+<!-- < %= link_to 'Back', purchase_preferences_path %> -->

@@ -1,0 +1,25 @@
+<h1>Listing filter_analytics</h1>
+
+<table>
+  <tr>
+    <th>Password</th>
+    <th>Filter name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @filter_analytics.each do |filter_analytic| %>
+  <tr>
+    <td><%= filter_analytic.password %></td>
+    <td><%= filter_analytic.filter_name %></td>
+    <td><%= link_to 'Show', filter_analytic %></td>
+    <td><%= link_to 'Edit', edit_filter_analytic_path(filter_analytic) %></td>
+    <td><%= link_to 'Destroy', filter_analytic, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Filter analytic', new_filter_analytic_path %>

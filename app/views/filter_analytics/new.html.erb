@@ -1,0 +1,29 @@
+<style type="text/css" media="screen">
+.error_messages {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  font-size: 18px;
+  }
+</style>
+
+  <% flash.each do |name, msg| %>
+    <div class="error_messages">
+      <%= msg  %>
+    </div><br />
+  <% end %>
+<br />
+Remove your browser/machine combo from Google Analytics Tracking for feeWISE.
+<br />
+Enter the password feewise supplied.
+<br />
+Also, enter a unique identifier, just characters and numbers, starting with a character
+<br />
+The unique identifier is for this browser machine combination.
+<br /><br />
+<%= render 'form' %>
+
+<!-- < %= link_to 'Back', filter_analytics_path %> -->

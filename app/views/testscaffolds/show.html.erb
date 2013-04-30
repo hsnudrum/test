@@ -1,0 +1,43 @@
+<%- model_class = Testscaffold -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:mystringxx) %>:</strong></dt>
+  <dd><%= @testscaffold.mystringxx %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mytextxx) %>:</strong></dt>
+  <dd><%= @testscaffold.mytextxx %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:myintegerxx) %>:</strong></dt>
+  <dd><%= @testscaffold.myintegerxx %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:myfloatxx) %>:</strong></dt>
+  <dd><%= @testscaffold.myfloatxx %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mydecimalxx) %>:</strong></dt>
+  <dd><%= @testscaffold.mydecimalxx %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mydatetimexx) %>:</strong></dt>
+  <dd><%= @testscaffold.mydatetimexx %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mytimestampxx) %>:</strong></dt>
+  <dd><%= @testscaffold.mytimestampxx %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mytimexx) %>:</strong></dt>
+  <dd><%= @testscaffold.mytimexx %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mydatexx) %>:</strong></dt>
+  <dd><%= @testscaffold.mydatexx %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mybinaryxx) %>:</strong></dt>
+  <dd><%= @testscaffold.mybinaryxx %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mybooleanxx) %>:</strong></dt>
+  <dd><%= @testscaffold.mybooleanxx %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:myreferencesxx_id) %>:</strong></dt>
+  <dd><%= @testscaffold.myreferencesxx_id %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              testscaffolds_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_testscaffold_path(@testscaffold), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              testscaffold_path(@testscaffold),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

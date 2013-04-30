@@ -1,0 +1,13 @@
+// Place all the styles related to the Accounts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*
+*/
+TR.even { background-color: #E2E4FF; }
+TR.odd { background-color: #ffffff; }
+
+SPAN.sam { background-color: #FFFFDB;} /* yellow foreground for done field */
+SPAN.myfg { color:#228B22;}  /* green check box */
+SPAN.myip { color:#9900DC;}  /* in process #A043B6 #AD20DF */
+SPAN.tiny {font-size: 0.8em} /* This decreases the font to 8pt */
+SPAN.big {font-size: 1.6em} /* This increases the font to 12pt */

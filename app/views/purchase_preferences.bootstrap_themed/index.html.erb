@@ -1,0 +1,68 @@
+<%- model_class = PurchasePreference -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:location) %></th>
+      <th><%= model_class.human_attribute_name(:min_price) %></th>
+      <th><%= model_class.human_attribute_name(:max_price) %></th>
+      <th><%= model_class.human_attribute_name(:time_frame) %></th>
+      <th><%= model_class.human_attribute_name(:daytime_phone) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:buying) %></th>
+      <th><%= model_class.human_attribute_name(:buy_where) %></th>
+      <th><%= model_class.human_attribute_name(:buy_when) %></th>
+      <th><%= model_class.human_attribute_name(:selling) %></th>
+      <th><%= model_class.human_attribute_name(:selling_where) %></th>
+      <th><%= model_class.human_attribute_name(:selling_when) %></th>
+      <th><%= model_class.human_attribute_name(:purchase_low) %></th>
+      <th><%= model_class.human_attribute_name(:purchase_high) %></th>
+      <th><%= model_class.human_attribute_name(:sell_low) %></th>
+      <th><%= model_class.human_attribute_name(:sell_high) %></th>
+      <th><%= model_class.human_attribute_name(:body) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @purchase_preferences.each do |purchase_preference| %>
+      <tr>
+        <td><%= link_to purchase_preference.id, purchase_preference_path(purchase_preference) %></td>
+        <td><%= purchase_preference.location %></td>
+        <td><%= purchase_preference.min_price %></td>
+        <td><%= purchase_preference.max_price %></td>
+        <td><%= purchase_preference.time_frame %></td>
+        <td><%= purchase_preference.daytime_phone %></td>
+        <td><%= purchase_preference.user_id %></td>
+        <td><%= purchase_preference.buying %></td>
+        <td><%= purchase_preference.buy_where %></td>
+        <td><%= purchase_preference.buy_when %></td>
+        <td><%= purchase_preference.selling %></td>
+        <td><%= purchase_preference.selling_where %></td>
+        <td><%= purchase_preference.selling_when %></td>
+        <td><%= purchase_preference.purchase_low %></td>
+        <td><%= purchase_preference.purchase_high %></td>
+        <td><%= purchase_preference.sell_low %></td>
+        <td><%= purchase_preference.sell_high %></td>
+        <td><%= purchase_preference.body %></td>
+        <td><%=l purchase_preference.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_purchase_preference_path(purchase_preference), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      purchase_preference_path(purchase_preference),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_purchase_preference_path,
+            :class => 'btn btn-primary' %>

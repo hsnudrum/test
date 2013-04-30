@@ -1,0 +1,20 @@
+
+<%= display_heading :heading_text => 'Purchase Preferences' %>
+
+<!-- BEGIN CONTENT ####################-->
+<div id="content" style="">
+  <div id="content-body">
+    <%= render :partial => "static_pages/generic_sidebar" %>
+    <div class="one-col"><!-- --></div>
+    <div class="five-col">
+
+      <p> <%= t ".fe_new_purchase_preferences", default: "Tell us a little bit about what you are looking to purchase." %> </p>
+
+
+      <%= render 'form' %>
+
+    </div>
+  </div>
+  <br class="clearBoth" />
+</div>
+<!-- END CONTENT ####################-->

@@ -1,0 +1,33 @@
+<h1>Listing contact_feewises</h1>
+
+<table>
+  <tr>
+    <th>To</th>
+    <th>Cc</th>
+    <th>Subject</th>
+    <th>Body</th>
+    <th>Label</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contact_feewises.each do |contact_feewise| %>
+  <tr>
+    <td><%= contact_feewise.to %></td>
+    <td><%= contact_feewise.cc %></td>
+    <td><%= contact_feewise.subject %></td>
+    <td><%= contact_feewise.body %></td>
+    <td><%= contact_feewise.label %></td>
+    <td><%= contact_feewise.user_id %></td>
+    <td><%= link_to 'Show', contact_feewise %></td>
+    <td><%= link_to 'Edit', edit_contact_feewise_path(contact_feewise) %></td>
+    <td><%= link_to 'Destroy', contact_feewise, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contact feewise', new_contact_feewise_path %>

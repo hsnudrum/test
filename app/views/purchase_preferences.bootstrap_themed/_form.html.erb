@@ -1,0 +1,24 @@
+<%= simple_form_for @purchase_preference, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :location %>
+  <%= f.input :min_price %>
+  <%= f.input :max_price %>
+  <%= f.input :time_frame %>
+  <%= f.input :daytime_phone %>
+  <%= f.input :user_id %>
+  <%= f.input :buying %>
+  <%= f.input :buy_where %>
+  <%= f.input :buy_when %>
+  <%= f.input :selling %>
+  <%= f.input :selling_where %>
+  <%= f.input :selling_when %>
+  <%= f.input :purchase_low %>
+  <%= f.input :purchase_high %>
+  <%= f.input :sell_low %>
+  <%= f.input :sell_high %>
+  <%= f.input :body %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                purchase_preferences_path, :class => 'btn' %>
+  </div>
+<% end %>

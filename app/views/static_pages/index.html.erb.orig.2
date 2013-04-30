@@ -1,0 +1,126 @@
+
+<style type="text/css" media="screen">
+  div.slideheight
+  {
+    height:212px;
+  }
+</style>
+
+<div class="row">
+
+  <div class="span6 offset1">
+
+    <!-- <div class="well"> -->
+    <div id="myCarousel" class="carousel slide">
+
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+
+        <div class="active item slideheight well">
+          <iframe width="378" height="212" src="<%="http://www.youtube.com/embed/"+@video %>" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>So you want to buy a place of your own.</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>You just love the City</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>You Want the Best Deal Possible</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>If only you knew someone who could make the process clear</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>You want all the necessary info but don't want a phd in Real Estate</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>If only you knew someone who has done it all before</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>Some one who could help negotiate for me</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>Agents make so much and do so little</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>I don't want to end up house poor</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>FeeWISE Can Help</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>FeeWISE Can Help You get Money back when you close</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>FeeWISE Can Help You get Money back by pre-negotiating with Brokers/Agents</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>And the payoff is at least 10 to 1</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>That's right a $100 gets you $1000 or more</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>You can start by signing up for our news letter</h2>
+        </div>
+
+        <div class="item slideheight well">
+          <h2>Or you can Click BUY and we will set you up with a broker </h2>
+        </div>
+
+      </div>
+
+
+      <!-- Carousel nav -->
+      <!-- <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a> -->
+      <!-- <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a> -->
+    </div>
+    <!-- </div> -->
+
+  </div>
+</div>
+
+<div class="row">
+<div class="span6 offset1">
+<p> <%= t ".fe_landing_1", default: "<b>Y</b>ou are buying in this market because you want to get a good deal.  To get a good deal, you cannot remain in the dark about what you are really paying.  That’s where we can help.<br>We show you how to buy, step by step. &nbsp;How to know who the professional you are talking to is really working for. &nbsp; Questions you must ask. &nbsp;Insider tips. &nbsp;Hacks. &nbsp;Rebates<br><br>Our promise: &nbsp;If you make a real estate purchase following our process in the next 12 months and we cannot save you at least $1000 you get two times your money back.<br><br>Be smart. &nbsp;Be informed. &nbsp;Be feeWISE." %> </p>
+</div>
+
+</div>
+
+
+
+
+<%= simple_form_for @subscription, :html => { :class => 'form-inline' } do |f| %>
+  <div class="row">
+    <div class="span5">
+&nbsp;
+    </div>
+    <div class="span3">
+      <%= f.input :email, :label => false, :placeholder => 'yourname@example.com' %>
+      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+        <i class="icon-envelope icon-white"></i> Join Mailing List
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+<br />
+
+<!-- < %= link_to image_tag("btn-question.gif"), '/support', title: "Support / FAQ", alt: "Ask a Question"  %> -->

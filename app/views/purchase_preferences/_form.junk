@@ -1,0 +1,104 @@
+<%= f.button :submit, :class => 'btn-primary' %>
+
+
+
+
+<%= form_for(@purchase_preference) do |f| %>
+  <% if @purchase_preference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purchase_preference.errors.count, "error") %> prohibited this purchase_preference from being saved:</h2>
+
+      <ul>
+        <% @purchase_preference.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class='left'>
+
+    <div class="field">
+      <%= f.label :where? %><br />
+      <%= f.text_field :buy_where, :size => 25, :class => 'input-text' %>
+    </div>
+    <div class="field">
+      <%= f.label :when? %><br />
+      <%= f.text_field :buy_when, :size => 25, :class => 'input-text' %>
+    </div>
+    <p></p>
+    <div class="field">
+      <%= f.label :best_number_to_reach_you %>: * <br />
+      <%= f.text_field :daytime_phone, :class => 'input-text', :size => 25 %>
+    </div>
+  </div>
+
+  <div class='right'>
+    <div class="field">
+      <%= f.label :selling_where %><br />
+      <%= f.text_field :selling_where, :size => 25, :class => 'input-text' %>
+    </div>
+    <div class="field">
+      <%= f.label :selling_when %><br />
+      <%= f.text_field :selling_when, :size => 25, :class => 'input-text' %>
+    </div>
+    <p></p>
+    <div class="field">
+      <br />
+      <strong>* required </strong>
+      <br /> <br />
+    </div>
+  </div>
+
+  <div class='left'>
+    <p></p>
+    <div>Purchase Price Range</div>
+    <p></p>
+    <div class="field">
+      <%= f.label :low %><br />
+      <%= f.text_field :purchase_low, :size => 25, :class => 'input-text' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :high %><br />
+      <%= f.text_field :purchase_high, :size => 25, :class => 'input-text' %>
+    </div>
+
+  </div>
+
+  <div class='right'>
+    <p></p>
+    <div>Sale Price Range</div>
+    <p></p>
+    <div class="field">
+      <%= f.label :sell_low %><br />
+      <%= f.text_field :sell_low, :size => 25, :class => 'input-text' %>
+    </div>
+    <div class="field">
+      <%= f.label :sell_high %><br />
+      <%= f.text_field :sell_high, :size => 25, :class => 'input-text' %>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <div class="margined-p">Anything Else?</div>
+    <%= f.text_area :body, :size => '43x5', :class => "input-text-area"  %>
+  </div>
+
+
+  <p class="shrink-sentence"> TIP: Answer as best as possible.  Ok if you are uncertain. You can change your mind later.</p>
+
+
+
+  <div class="actions">
+
+    <%= f.submit "" , :class => 'btn-continue' %>
+    <%= f.submit "Not sure about the details? You can skip for now." , :class => "smTxt" %>
+
+  </div>
+
+  <!--   < %= f.submit %> -->
+
+<% end %>

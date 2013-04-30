@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <script type="text/javascript">
+      var _kmq = _kmq || [];
+      var _kmk = _kmk || 'daaa8037d97212c55b31785ee3a79665decc7dbb';
+      function _kms(u){
+        setTimeout(function(){
+          var d = document, f = d.getElementsByTagName('script')[0],
+          s = d.createElement('script');
+          s.type = 'text/javascript'; s.async = true; s.src = u;
+          f.parentNode.insertBefore(s, f);
+        }, 1);
+      }
+      _kms('//i.kissmetrics.com/i.js');
+      _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+    </script>
+
+    <title>feeWISE Admin</title>
+    <!-- < %= stylesheet_link_tag    "application", :media => "all" %> -->
+    <!-- < %= stylesheet_link_tag    "application", :media => "all" %> -->
+    <!-- < %= javascript_include_tag  "application" %> -->
+    <!-- <%= csrf_meta_tags %> -->
+    <!-- < %= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %> -->
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-33332101-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+
+<style type="text/css" media="screen">
+#nav {
+  width: 50%;
+  float: left;
+  margin: 0 0 3em 0;
+  padding: 0;
+  list-style: none;
+  background-color: #81F5DE;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc; }
+#nav li {
+  float: left; }
+#nav li a {
+  display: block;
+  padding: 8px 15px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333333;
+  border-right: 0px solid #ccc; }
+#nav li a:hover {
+  color: #4E5954;
+  background-color: #C5FFE4; }
+
+
+</style>
+
+
+
+
+
+
+  </head>
+  <body>
+<br /><br /><br /><br /><br />
+
+
+<ul id="nav">
+  <li><a href="#">About Us</a></li>
+  <li><a href="#">Our Products</a></li>
+  <li><a href="#">FAQs</a></li>
+  <li><a href="#">Contact</a></li>
+  <li><a href="#">Login</a></li>
+</ul>
+
+
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+
+      <%= yield %>
+
+
+  </body>
+</html>

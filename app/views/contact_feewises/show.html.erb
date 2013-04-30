@@ -1,0 +1,26 @@
+<%= display_heading :heading_text => 'Thank You!' %>
+<!-- BEGIN CONTENT ####################-->
+<div id="content" style="">
+  <div id="content-body">
+    <%= render :partial => "static_pages/generic_sidebar" %>
+    <div class="one-col"><!-- --></div>
+    <div class="five-col">
+      <%= t ".fe_thank_you_email", default: "Thank you for sending us an enquiry." %>
+      <br />      <br />
+      <p>
+        <a href="http://www.facebook.com/feeWISE" target="_blank">
+          <img src="/assets/lg-icon-facebook.jpg" title="Like us on Facebook" alt="Facebook" class="social-icons" /></a>
+        <a href="http://twitter.com/feewise" target="_blank">
+          <img src="/assets/lg-icon-twitter.jpg" title="Follow us on Twitter" alt="Twitter" class="social-icons" /></a>
+      </p>
+
+      <!-- <p>< %= link_to image_tag( "btn-myAccount.gif", :title => "Go to My Account", :class => "button", :alt=>"Go to My Account"), purchase_preference_path(current_user.purchase_preference) %></p> -->
+
+    </div>
+  </div>
+  <br class="clearBoth" />
+</div>
+<!-- END CONTENT ####################-->
+<script type="text/javascript">
+  _kmq.push(['record', 'Conversion']);
+</script>

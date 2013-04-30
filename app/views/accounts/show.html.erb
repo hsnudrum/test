@@ -1,0 +1,43 @@
+<%= display_heading :heading_text => "Checklist for #{current_user.full_name}" %>
+
+<h5>Let us guide and empower you through every step of the way with this easy to follow checklist.</h5>
+
+<div class="row">
+  <div class="span6">
+    <!-- Possible states are: DONE, INPROC, TBD -->
+    <!-- Possible level_opt are: tiny, big -->
+		<% @unicode = 0x2460 %>
+
+    <%= display_numbered_account_line (@unicode+0).to_s(16) , "Register with feeWISE", "DONE" %>
+<!-- < % debugger -%> -->
+
+		<%= display_numbered_account_line (@unicode+1).to_s(16), "Add People", @account.add_people?,
+				:message => "If you would like to keep your wife or partner or attorney informed of your progress you can include them here and they will be kept in the loop of the progress you are making and will also receive all the notices.",
+				:action => "new_partner_path", :args => nil  %>				
+<!-- Above action and args are dummys and need to be properly defined -->
+
+		<%= display_numbered_account_line (@unicode+2).to_s(16) , "Set Budget", @account.set_budget?,
+				:message => "The next step is Budgeting. If you have an idea for how much you plan to spend on a home click to fill in the 'purchase preferences price range' otherwise you can contact one of our budgeting counsilors who are on hand to help you",
+				:action => "edit_purchase_preference_path", :args => current_user.purchase_preference  %>
+
+		<%= display_numbered_account_line (@unicode+3).to_s(16) , "Build your Team", @account.build_your_team?,
+				:message => "Your team consists of a Broker and optionally the Title Insurance Company, Home Inspector, Private Morgage Insurance, Home Insurance, Painter ...",
+				:action => "edit_team_path", :args => current_user.team  %>
+
+    <%= display_numbered_account_line (@unicode+4).to_s(16), "Find a Home", @account.find_a_home?,
+				:message => "Here is where your team can really help you define your goals (wip)",
+				:action => "edit_team_path", :args => current_user.team  %>
+
+
+    <%= display_numbered_account_line (@unicode+5).to_s(16), "Negotiate Best Deal" %>
+    <%= display_numbered_account_line (@unicode+6).to_s(16), "Sign a Contract" %>
+    <%= display_numbered_account_line (@unicode+7).to_s(16), "Complete Property Checkups" %>
+    <%= display_numbered_account_line (@unicode+8).to_s(16), "Prepare Closing" %>
+    <%= display_numbered_account_line (@unicode+9).to_s(16), "Close" %>
+    <%= display_numbered_account_line (@unicode+10).to_s(16), "Request Rebate" %>
+    <%= display_numbered_account_line (@unicode+11).to_s(16), "Move In and Celebrate!" %>    
+
+  </div> <!-- span -->
+</div> <!-- row -->
+
+<br />

@@ -1,0 +1,155 @@
+<%= simple_form_for(@team) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+ 		<table class="table table-bordered table-striped">
+
+			<thead>
+				<tr>
+					<th>Resource</th>
+					<th>Found</th>
+					<th>Their code</th>
+					<th>Contact info</th>
+				</tr>
+			</thead>
+
+			<tr>
+				<td>Broker/Agent</td>
+
+				<td><%= f.input :broker_found, :label => false, :as => :radio_buttons, :required => true %> </td>
+				<td><%= f.input :broker_id_code, :label => false, :required => true, :placeholder => 'Required' %> </td>
+				<td><%= f.input :broker_cell, :label => false, :required => true, :placeholder => 'Required' %> </td>
+			</tr> 
+
+			<tr><td colspan="4"> The following are Optional and currently not part of the feeWISE Market place.  As additional agent agreements are signed we will be significantly expanding this section.  Thank you for your patients.</td></tr>
+
+			<tr>	
+				<td>Title Insurance</td>
+				<td><%= f.input :title_insurance_company_found, :label => false, :as => :radio_buttons, :disabled => true %> </td>
+				<td><%= f.input :title_insurance_company_id_code, :label => false, :placeholder => 'N/A', :disabled => true  %> </td>
+				<td><%= f.input :title_insurance_company_phone, :label => false, :placeholder => 'N/A', :disabled => true  %> </td>
+			</tr> 
+			<tr>
+				<td>Home Inspector</td>
+				<td><%= f.input :home_inspector_found, :label => false, :as => :radio_buttons, :disabled => true %>	 </td>
+				<td><%= f.input :home_inspector_id_code, :label => false, :placeholder => 'N/A', :disabled => true %> </td>
+				<td><%= f.input :home_inspector_cell, :label => false, :placeholder => 'N/A', :disabled => true %>    </td>
+			</tr>
+			<tr>
+				<td>Private Mortgage Insurance</td>
+				<td> <%= f.input :private_morgage_insurance_found, :label => false, :as => :radio_buttons, :disabled => true %> </td>
+				<td> <%= f.input :private_morgage_insurance_id_code, :label => false, :placeholder => 'N/A', :disabled => true %> </td>
+				<td> <%= f.input :private_morgage_insurance_phone, :label => false, :placeholder => 'N/A', :disabled => true %> </td>
+			</tr>
+
+
+			<tr>
+				<td>Home Insurance</td>
+				<td><%= f.input :home_insurance_found, :label => false, :as => :radio_buttons, :disabled => true %></td>
+				<td><%= f.input :home_insurance_id_code, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+				<td><%= f.input :home_insurance_phone, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+			</tr>
+
+
+			<tr>
+				<td>Painter</td>
+				<td><%= f.input :painter_found, :label => false, :as => :radio_buttons, :disabled => true %></td>
+				<td><%= f.input :painter_id_code, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+				<td><%= f.input :painter_cell, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+			</tr>
+
+
+			<tr>
+				<td>Sound Engineer</td>
+				<td><%= f.input :sound_engineer_found, :label => false, :as => :radio_buttons, :disabled => true %></td>
+				<td><%= f.input :sound_engineer_id_code, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+				<td><%= f.input :sound_engineer_cell, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+			</tr>
+
+			<tr>
+				<td>Lighting Contractor</td>
+				<td><%= f.input :lighting_contractor_found, :label => false, :as => :radio_buttons, :disabled => true %></td>
+				<td><%= f.input :lighting_contractor_id_code, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+				<td><%= f.input :lighting_contractor_phone, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+			</tr>
+
+			<tr>
+				<td>Water System</td>
+				<td><%= f.input :water_system_found, :label => false, :as => :radio_buttons, :disabled => true %></td>
+				<td><%= f.input :water_system_id_code, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+				<td><%= f.input :water_system_phone, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+			</tr>
+
+
+			<tr>
+				<td>Electrician</td>
+				<td><%= f.input :electrician_found, :label => false, :as => :radio_buttons, :disabled => true %></td>
+				<td><%= f.input :electrician_id_code, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+				<td><%= f.input :electrician_cell, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+			</tr>
+
+			<tr>
+				<td>HVAC</td>
+				<td><%= f.input :hvac_found, :label => false, :as => :radio_buttons, :disabled => true %></td>
+				<td><%= f.input :hvac_id_code, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+				<td><%= f.input :hvac_cell, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+			</tr>
+
+			<tr>
+				<td>Trim</td>
+				<td><%= f.input :trim_found, :label => false, :as => :radio_buttons, :disabled => true %></td>
+				<td><%= f.input :trim_id_code, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+				<td><%= f.input :trim_cell, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+			</tr>
+
+			<tr>
+				<td>Kitchen and Bath</td>
+				<td><%= f.input :kitchen_and_bath_found, :label => false, :as => :radio_buttons, :disabled => true %></td>
+				<td><%= f.input :kitchen_and_bath_id_code, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+				<td><%= f.input :kitchen_and_bath_cell, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+			</tr>
+
+			<tr>
+				<td>Flooring</td>
+				<td><%= f.input :flooring_found, :label => false, :as => :radio_buttons, :disabled => true %></td>
+				<td><%= f.input :flooring_id_code, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+				<td><%= f.input :flooring_phone, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+			</tr>
+
+			<tr>
+				<td>Water Proofing</td>
+				<td><%= f.input :water_proofing_found, :label => false, :as => :radio_buttons, :disabled => true %></td>
+				<td><%= f.input :water_proofing_id_code, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+				<td><%= f.input :water_proofing_phone, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+			</tr>
+
+			<tr>
+				<td>Landscaping</td>
+				<td><%= f.input :landscaping_found, :label => false, :as => :radio_buttons, :disabled => true %></td>
+				<td><%= f.input :landscaping_id_code, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+				<td><%= f.input :landscaping_cell, :label => false, :placeholder => 'N/A', :disabled => true %></td>
+			</tr>
+
+		</table>
+
+
+  </div>
+
+  <!-- <div class="form-actions"> -->
+  <!--   < %= f.button :submit, 'Save' %> -->
+  <!-- </div> -->
+
+
+  <div class="form-actions">
+
+    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+      Save <i class="icon-white icon-arrow-right"></i>
+    <% end %>
+
+  </div>
+
+
+
+
+<% end %>

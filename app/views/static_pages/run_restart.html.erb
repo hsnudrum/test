@@ -1,0 +1,26 @@
+<%= display_heading :heading_text => 'Restart the server in order to see changes on system' %>
+<!-- BEGIN CONTENT ####################-->
+<div id="content" style="">
+  <div id="content-body">
+    <!-- < %= render :partial => "static_pages/generic_sidebar" %> -->
+      <div class="one-col"><!-- --></div>
+      <div class="five-col">
+        <p>
+          <%= t ".fe_info_on_doing_a_restart", default: "Trying to Restart the system to check change to css and js enhancements" %>
+          <p>Here is the restart link</p>
+          <%= link_to "Restart", :controller => "static_pages", :action => "do_the_restart" %>
+        </p>
+      </div>
+  </div>
+  <br class="clearBoth" />
+
+ <%= debug(params) %>
+ <%= debug(ENV[PORT]) %>
+ <%= debug(ENV[RAILS_ENV]) %>
+ <%= debug(`ps auxww`) %>
+
+
+<!-- `bundle exec thin start -R config.ru -e $RAILS_ENV -p $PORT` -->
+
+</div>
+<!-- END CONTENT ####################-->

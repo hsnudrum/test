@@ -1,0 +1,33 @@
+<h1>Listing purchase_preferences</h1>
+
+<table>
+  <tr>
+    <th>Location</th>
+    <th>Min price</th>
+    <th>Max price</th>
+    <th>Time frame</th>
+    <th>Daytime phone</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @purchase_preferences.each do |purchase_preference| %>
+  <tr>
+    <td><%= purchase_preference.location %></td>
+    <td><%= purchase_preference.min_price %></td>
+    <td><%= purchase_preference.max_price %></td>
+    <td><%= purchase_preference.time_frame %></td>
+    <td><%= purchase_preference.daytime_phone %></td>
+    <td><%= purchase_preference.user %></td>
+    <td><%= link_to 'Show', purchase_preference %></td>
+    <td><%= link_to 'Edit', edit_purchase_preference_path(purchase_preference) %></td>
+    <td><%= link_to 'Destroy', purchase_preference, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Purchase preference', new_purchase_preference_path %>

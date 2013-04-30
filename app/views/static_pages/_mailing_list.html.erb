@@ -1,0 +1,22 @@
+
+<%= simple_form_for (Subscription.new), :html => { :class => 'form-inline' } do |f| %>
+	<input type="email" size="50" placeholder="Best Email Address" name="subscription[email]" id="subscription_email" class="string email required">
+	<br /><br />
+	<div class="start-hidden">
+		<%= f.input :first_name, :placeholder => '(Optional) First name' , :label => false %>
+		<%= f.input :last_name, :placeholder => '(Optional) Last name' , :label => false %>
+	</div>
+	<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+		<i class="icon-envelope icon-white"></i> Newsletter
+	<% end %>
+<% end %>
+
+
+<script>
+	$(document).ready(function(){
+		$(".start-hidden").hide();
+		$("#subscription_email").focus(function(){
+  		$(".start-hidden").show();
+		});
+	});
+</script>

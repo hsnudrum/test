@@ -1,0 +1,24 @@
+<%- model_class = User -%>
+<!-- BEGIN PAGE-HEAD ####################-->
+<div id="pageHead">
+  <div id="title-area">
+    <div id="title-content"><h1>Sign In</h1></div>
+  </div>
+</div>
+<!-- END PAGE-HEAD ####################-->
+
+<!-- BEGIN CONTENT ####################-->
+<div id="content" style="">
+  <div id="content-body">
+    <%= render :partial => "static_pages/generic_sidebar" %>
+    <div class="one-col"><!-- --></div>
+    <div class="five-col">
+
+      <%= render :partial => 'simple_sign_up' %>
+
+    </div>
+  </div>
+  <br class="clearBoth" />
+<%= render :partial => 'devise/shared/links' %>
+</div>
+<!-- END CONTENT ####################-->

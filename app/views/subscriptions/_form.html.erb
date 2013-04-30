@@ -1,0 +1,29 @@
+<%= form_for(@subscription) do |f| %>
+  <% if @subscription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+
+      <ul>
+        <% @subscription.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <!-- < %= f.label :email %><br /> -->
+    <%= f.text_field :email, :class => "input-text", :placeholder => "Enter your email & hit return"  %>
+  </div>
+
+  <!-- <div class="actions"> -->
+  <!--   < %= f.submit "Join Mailing List", :class => 'btn'  %> -->
+  <!-- </div> -->
+
+
+  <%= link_to(new_subscription_path, :class => 'btn btn-large btn-success whitelink') do %>
+    Join Mailing List <i class="icon-envelope icon-white"></i>
+  <% end %>
+
+
+<% end %>

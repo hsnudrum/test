@@ -1,0 +1,17 @@
+<%= display_heading :heading_text => 'Credit Card Details' %>
+
+<div id="content" style="">
+  <div id="content-body">
+
+    <%= render :partial => "static_pages/sidebar" %>
+
+
+    <% if Rails.env.to_s != "production" -%>
+      <p>Some test card numbers</p>
+      <p>4242424242424242</p>
+    <% end -%>
+
+    <%= render 'form' %>
+
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- < % ab_test "landing", "accordion", "slider", "sticky_footer" do |style| %> -->
+  <!-- < % ab_test "landing", "accordion", "slider", "sticky_footer", "bothsticky" do |style| %> -->
+  <!-- < % ab_test "landing", "slider", "accordion" do |style| %> -->
+  <!-- < % session[:style] ? style = session[:style] : session[:style] = style -%>  <\!-- this has to do with testing and is needed -\-> -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "feeWISE" %></title>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
+    <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <link rel="shortcut icon" href="https://www.leadplace.com/images/favicon.ico?id=222" type="image/x-icon" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.23/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <%= render :partial => "layouts/add_feewiss_google_analytics" %>
+  </head>
+
+  <body>
+    <%= render( :partial => "layouts/body_slider" ) %> <!-- In play -->
+    <!-- < %= render( :partial => "layouts/body_slider", :style => style ) if style == "slider" %> -->
+    <!-- < %= render( :partial => "layouts/body_accordion", :style => style ) if style == "accordion" %> -->
+    <!-- < %= render( :partial => "layouts/body_sticky_footer", :style => style ) if style == "sticky_footer" %> -->
+    <!-- < %= render( :partial => "layouts/body_bothsticky", :style => style ) if style == "bothsticky" %> -->
+    <!-- < %= render( :partial => "layouts/body_simple_tabs", :style => style ) if style == "simple_tabs" %> -->
+  </body>
+
+<!-- < % end %> -->
+</html>

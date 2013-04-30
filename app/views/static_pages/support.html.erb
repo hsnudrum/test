@@ -1,0 +1,30 @@
+<!-- BEGIN PAGE-HEAD ####################-->
+<div id="pageHead">
+  <div id="title-area">
+    <div id="title-content"><h1>Support/FAQ</h1></div>
+  </div>
+</div>
+<!-- END PAGE-HEAD ####################-->
+
+
+<!-- BEGIN CONTENT ####################-->
+<div id="content" style="">
+  <div id="content-body">
+    <%= render :partial => "static_pages/generic_sidebar" %>
+    <div class="one-col"><!-- --></div>
+    <div class="five-col">
+      <%= t ".fe_support_faq", default: "You can call us at 917-720-4242. Also, please feel free to email us at be@feewise.com for additional support." %>
+
+      <%= link_to "Click", new_contact_feewise_path %> to email us with more questions.
+
+    </div>
+  </div>
+  <br class="clearBoth" />
+</div>
+
+
+<br />
+
+
+
+<!-- END CONTENT ####################-->

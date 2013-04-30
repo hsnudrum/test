@@ -1,0 +1,19 @@
+
+
+<!--
+   < %= render :partial => "twitter_and_fb" %>
+-->
+
+<!-- <div class=""> -->
+
+<!-- The conceptual layout model -->
+<div class="row">
+  <div class="span5 well"> <!-- .carousel -->
+    &nbsp;
+  </div>
+  <div class="span4 well"> <!-- .video -->
+    &nbsp;
+  </div>
+</div>
+
+<!-- < %= render :partial => "dynamic_body" %> -->

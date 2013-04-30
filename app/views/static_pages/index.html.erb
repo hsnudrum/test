@@ -1,0 +1,61 @@
+<!-- The conceptual layout model -->
+
+<style type="text/css" media="screen">
+  div.fixed10 {height:150px;}
+</style>
+
+
+<%= content_for :sticky_footer do %>
+  <div class="row">
+    <div class="span7 offset2">
+      <%= render :partial => "static_pages/sticky_footer" %>
+    </div>
+  </div>
+<% end %>
+
+
+<%= content_for :bothsticky do %>
+  <div class="row">
+    <div class="span7 offset2">
+      <%= render :partial => "static_pages/bothsticky" %>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+<div class="row">
+  <!-- <div class="span4"> -->
+    <!-- < %= render :partial => "goanimate_video" %> --> <!-- VIDEO -->
+  <!-- </div> -->
+  <div class="span9">
+    <div class="row">
+
+      <%= content_for :accordion do %>
+        <%= render :partial => "static_pages/accordion" %> <!-- ACCORDION -->
+      <% end %>
+
+      <%= content_for :slider do %>
+        <%= render :partial => "static_pages/bootstrap_carousel" %> <!-- CAROUOSEL -->
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="span9">
+    <!-- < %= render :partial => "mailing_list" %> --> <!-- MAILING LIST -->
+  </div>
+</div>
+
+<br /><br /><br />
+<!-- <div class="row"> -->
+<!--  <div class="span 6 offset2"> -->
+<!--     < %= render :partial => "goanimate_video" %> <\!-- VIDEO -\-> -->
+<!--    <br /><br /><br /><br /> -->
+<!--  </div> -->
+<!-- </div> -->

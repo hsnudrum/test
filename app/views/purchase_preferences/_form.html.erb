@@ -1,0 +1,35 @@
+<%= simple_form_for @purchase_preference, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <h4>Additional Contact Info</h4>
+  <%= f.input :daytime_phone, :label => 'Best number to reach you', :required => true %>
+
+  <h4>Basic Property Info</h4>
+  <%= f.input :buy_where, :label => 'Where?' %>
+  <%= f.input :buy_when, :label => 'When?' %>
+
+  <h4>Purchase Price Range</h4>
+  <%= f.input :purchase_low, :label => 'Low' %>
+  <%= f.input :purchase_high, :label => 'High' %>
+
+  <h4>Anything else?</h4>
+  <%= f.input :body, :label => 'Comments?', :input_html => {:rows => 4} %>
+  <br />
+  <p class="shrink-sentence"> TIP: Answer as best as possible.  Ok if you are uncertain. You can change your mind later.</p>
+
+  <div class="form-actions">
+    <!-- < %= f.button :submit, :class => 'btn-primary' %> -->
+    <!-- < %= link_to t('.cancel', :default => t("helpers.links.cancel")), -->
+    <!--     purchase_preferences_path, :class => 'btn' %> -->
+
+    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+      Continue <i class="icon-white icon-arrow-right"></i>
+    <% end %>
+
+    <!-- < %= button_tag(type: 'submit', class: "btn") do %> -->
+    <!--   Skip Purchase Profile <i class="icon-white icon-arrow-right"></i> -->
+    <!-- < % end %> -->
+
+
+  </div>
+
+<% end %>

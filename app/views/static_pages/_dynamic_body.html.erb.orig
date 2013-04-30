@@ -1,0 +1,157 @@
+
+
+<div class="row">
+  <div class="span6 offset1"> <!-- Narrow the slider -->
+    <div id="myCarousel" class="carousel slide">
+
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <div class="active item">
+
+
+          <h2>So you want to buy a place of your own.</h2>
+
+          <!-- <ul> -->
+          <!--   <li><h5>DeedCast is building a work market for residential real estate</h5></li> -->
+          <!--   <li><h5>Commissions: very high</h5></li> -->
+          <!--   <li><h5>Agent productivity: very low</h5></li> -->
+          <!--   <li><h5>yada yada yada</h5></li> -->
+          <!-- </ul> -->
+        </div>
+        <div class="item">
+          <!-- < %= image_tag "new-york-city-skyline-panorama-black-and-white-silhouette-clip-art-illustration.jpg", :title => "NYC sky line",  :align =>"center", :size => "437x364" %> -->
+        </div>
+        <div class="item">
+
+          <h2>And you just love the City</h2>
+
+
+          <!-- <ul> -->
+          <!--   <li><h5>Resale market participants:</h5></li> -->
+          <!--   <li><h5>home buyers & sellers</h5></li> -->
+          <!--   <li><h5>real estate agents, and</h5></li> -->
+          <!--   <li><h5>related service providers.</h5></li> -->
+          <!-- </ul> -->
+        </div>
+        <div class="item">
+
+          <h2>You Want the Best Deal Possible</h2>
+
+          <!-- <ul> -->
+          <!--   <li><h5>replacing commission-based brokerage</h5></li> -->
+          <!--   <li><h5>with our fee-for-service model will</h5></li> -->
+          <!--   <li><h5>save consumers billions</h5></li> -->
+          <!--   <li><h5>yada yada yada</h5></li> -->
+          <!-- </ul> -->
+        </div>
+
+        <div class="item">
+          <h2>If only You knew someone who could tell you how to get the best possible deal</h2>
+        </div>
+
+        <div class="item">
+          <h2>You feel confident you can do it</h2>
+        </div>
+
+
+        <div class="item">
+          <h2>If only you knew someone who has done it before and is an expert</h2>
+        </div>
+
+        <div class="item">
+          <h2>I'd go to a broker but they work for the seller.</h2>
+        </div>
+
+        <div class="item">
+          <h2>I know there are buyer Agents.  But how do I know why they are doing that?</h2>
+        </div>
+
+        <div class="item">
+          <h2>If after I buy I am not so house poor I can afford furnature.</h2>
+        </div>
+
+        <div class="item">
+          <h2>FeeWISE Can Help</h2>
+        </div>
+
+        <div class="item">
+          <h2>FeeWISE Can Help You get Money back when you close.</h2>
+        </div>
+
+        <div class="item">
+          <h2>FeeWISE Can Help You get Money back by pre-negotiating with Brokers.</h2>
+        </div>
+
+        <div class="item">
+          <h2>And the payoff is at least 10 to 1</h2>
+        </div>
+
+        <div class="item">
+          <h2>That's right a $100 gets you $1000 or more</h2>
+        </div>
+
+
+        <div class="item">
+          <h2>Start by signing up for our news letter</h2>
+        </div>
+
+        <div class="item">
+          <h2>When you are ready to take the plung Click the Buy Button</h2>
+          <h2>Be on the way to getting money from the Broker, instead of just paying them</h2>
+        </div>
+
+
+
+
+      </div>
+
+
+
+
+      <!-- Carousel nav -->
+      <!-- <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a> -->
+      <!-- <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a> -->
+    </div>
+  </div>
+</div>
+
+
+<p> <%= t ".fe_landing_1", default: "<b>Y</b>ou are buying in this market because you want to get a good deal.  To get a good deal, you cannot remain in the dark about what you are really paying.  That’s where we can help.<br>We show you how to buy, step by step. &nbsp;How to know who the professional you are talking to is really working for. &nbsp; Questions you must ask. &nbsp;Insider tips. &nbsp;Hacks. &nbsp;Rebates<br><br>Our promise: &nbsp;If you make a real estate purchase following our process in the next 12 months and we cannot save you at least $1000 you get two times your money back.<br><br>Be smart. &nbsp;Be informed. &nbsp;Be feeWISE." %> </p>
+<br />
+<!-- <h4>Join our mailing list</h4> -->
+<!-- < %= render 'subscriptions/form' %> -->
+
+<!-- <div class="form-actions"> -->
+
+
+<!-- <form class="form-inline"> -->
+<!--   <input type="text" class="input-small" placeholder="Email"> -->
+<!--   <input type="password" class="input-small" placeholder="Password"> -->
+<!--   <label class="checkbox"> -->
+<!--     <input type="checkbox"> Remember me -->
+<!--   </label> -->
+<!--   <button type="submit" class="btn">Sign in</button> -->
+<!-- </form> -->
+
+
+
+<%= simple_form_for @subscription, :html => { :class => 'form-inline' } do |f| %>
+  <div class="row">
+    <div class="span6">
+      <%= f.input :email, :label => false, :placeholder => 'Get-our-news-letter@example.com' %>
+      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+        <i class="icon-envelope icon-white"></i> Join Mailing List
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+<!-- </div> -->
+
+<br />
+
+<!-- < %= link_to image_tag("btn-question.gif"), '/support', title: "Support / FAQ", alt: "Ask a Question"  %> -->

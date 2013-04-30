@@ -1,0 +1,11 @@
+      Full Name: <%= current_user.full_name %><br />
+      Email: <%= current_user.email %><br />
+      Started: <%= current_user.created_at.to_date %><br />
+
+      <% if current_user && current_user.card &&  current_user.card.stripe_card_token %>
+        Your Feewise ID: <%= current_user.id.to_s +  current_user.card.stripe_card_token %><br />
+        Paid: <%= current_user.card.paid %><br />
+        <% if current_user.card.paid %>
+          Amount Paid: $<%= current_user.card.amount_paid.to_f / 100 %> <br />
+        <% end %>
+      <% end %>

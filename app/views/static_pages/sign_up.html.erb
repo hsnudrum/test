@@ -1,0 +1,56 @@
+    <!-- BEGIN PAGE-HEAD ####################-->
+  <div id="pageHead">
+      <div id="title-area">
+          <div id="title-content"><h1>Sign Up</h1><div id="h1-altLink">or <a href="sign-in.html">Sign In</a></div></div>
+        </div>
+    </div>
+    <!-- END PAGE-HEAD ####################-->
+    <%= display_heading :heading_text => Sign Up' %>
+
+    <!-- BEGIN CONTENT ####################-->
+  <div id="content" style="">
+      <div id="content-body">
+        <%= render :partial => "static_pages/generic_sidebar" %>
+
+          <div class="one-col"><!-- --></div>
+            <div class="five-col">
+
+<!-- begin vs2 original -->
+
+
+
+              <form action="account.html">
+                  <div><label>Full Name</label></div>
+                    <div class="input-div"><input size="40" type="text" name="" class="input-text" /></div>
+
+                  <div><label>Email</label></div>
+                    <div class="input-div"><input size="40" type="text" name="" class="input-text" /></div>
+
+                  <div><label>Password</label></div>
+                    <div class="input-div"><input size="40" type="password" name="" class="input-text" /></div>
+
+                  <div><label>Password (Confirm)</label></div>
+                    <div class="input-div"><input size="40" type="password" name="" class="input-text" /></div>
+
+                    <div class="input-div">
+                      <label class="medTxt">
+                        <input type="checkbox" name="" value="" />
+
+                        <%= render :partial => "terms_and_privacy" %>
+
+                      </label>
+                    </div>
+
+                    <div class="btn-submit"><input type="submit" name="" value="" id="btn-signUp" /></div>
+                    <div class="btn-altLink"><a href="sign_in.html" class="smTxt">Already a member?</a></div>
+                </form>
+
+
+
+<!-- end vs2 original -->
+
+            </div>
+        </div>
+        <br class="clearBoth" />
+    </div>
+    <!-- END CONTENT ####################-->

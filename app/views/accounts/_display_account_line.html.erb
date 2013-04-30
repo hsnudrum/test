@@ -1,0 +1,37 @@
+<!-- To see the formatting this is doing see an example page /accounts/:id -->
+
+<!-- Called from app/views/accounts/show.html.erb with -->
+<!--    < %= display_numbered_account_line (@unicode+2).to_s(16) , "Set Budget", @account.set_budget?, -->
+<!-- 		:message => "The next step is Budgeting. If you have an idea for how much you plan to spend on a home click to fill in the 'purchase preferences price range' otherwise you can contact one of our budgeting counsilors who are on hand to help you", -->
+<!-- 		:action => "edit_purchase_preference_path", :args => current_user.purchase_preference % > -->
+
+<!-- Called from app/helpers/application_helper.rb with -->
+<!--   render :partial => "accounts/display_account_line", :locals => {:code => code, :message => message, :state => state, :how_to => how_to} -->
+
+
+<legend>
+  <% if state == "DONE" -%>	<!-- Check mark item -->
+		<h3>
+			<span class="myfg"> &#x2713; </span> <span class="tiny"> <%= message %> </span> <!-- check -->
+			<% if (!how_to.blank? && !how_to[:action].blank?) -%>
+				<%= link_to "edit" , Rails.application.routes.url_helpers.send(how_to[:action], how_to[:args]), {:style=>'font-size:20px;'} %> 
+
+
+
+			<% end %>
+		</h3>
+
+  <% elsif state == "INPROC" -%> <!-- Link to action for this account line -->
+		<h3>
+      <span class="myip"> 
+				<% sym = "&rArr;"  + " " + message + " " + "&lArr;"-%>
+				<%= link_to sym.html_safe , Rails.application.routes.url_helpers.send(how_to[:action], how_to[:args]) %>
+			</span>
+		</h3>
+		<h6> <span class="sam"><%= how_to[:message] %> </span> </h6>
+
+  <% else -%> <!-- These are the numbered items we have not gotten to yet. -->
+    <h3>&#x<%=code%>; <span class="tiny"> <%= message %> </span></h3>
+
+  <% end -%>
+</legend>

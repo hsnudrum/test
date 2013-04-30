@@ -1,0 +1,31 @@
+<%= form_for(@u) do |f| %>
+  <% if @u.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@u.errors.count, "error") %> prohibited this u from being saved:</h2>
+
+      <ul>
+      <% @u.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :original_url %><br />
+    <%= f.text_field :url, :size => 55, :class => 'input-text' %>
+  </div><br />
+  <div class="field">
+    <%= f.label :short_name %><br />
+    feewise.com/us/<%=f.text_field :name, :class => 'input-text' %>
+  </div><br />
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_area :note, :rows => '6', :cols => 55, :placeholder => "Who is this for what company, individual how can we contact them etc.", :class => 'input-text' %>
+  </div><br />
+
+  <div class="actions">
+    <!-- <p>< %= f.submit (@u.new_record? ? "Create" : "Update"), :id=>"btn-continue", :class=>"button" %></p> -->
+    <p><%= f.submit "", :id=>"btn-continue", :class=>"button" %></p>
+  </div><br />
+<% end %>
